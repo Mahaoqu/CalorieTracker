@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CalorieTracker</string>
+    <string name="tv_total_calorie">Put your total calorie today:</string>
+    <string name="tv_weight">Put your weight (lb):</string>
 </resources>
