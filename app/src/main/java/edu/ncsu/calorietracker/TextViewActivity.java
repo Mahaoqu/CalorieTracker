@@ -47,9 +47,12 @@ public class TextViewActivity extends AppCompatActivity {
                 user_age = Integer.valueOf(age_input.getText().toString());
 
                 //TODO
-                // to calculate if the user is healthy
-
-
+                /**
+                 * to calculate if the user is healthy
+                 * The formula is:
+                 * Adult male: 66 + (6.3 x body weight in lbs.) + (12.9 x height in inches) - (6.8 x age in years) = BMR
+                 * Adult female: 655 + (4.3 x weight in lbs.) + (4.7 x height in inches) - (4.7 x age in years) = BMR
+                 */
             }
         });
     }
