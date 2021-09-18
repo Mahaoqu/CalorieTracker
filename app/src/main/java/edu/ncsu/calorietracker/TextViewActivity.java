@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class TextViewActivity extends AppCompatActivity {
 
-    Button submitB;
+    private Button submitB;
     EditText calories_input;
     EditText weight_input;
     EditText height_input;
@@ -22,20 +22,18 @@ public class TextViewActivity extends AppCompatActivity {
     String user_gender;
     int user_age;
     int user_height;
+    double standardCalories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text_view);
-        //Input1 = (EditText) findViewById(R.id.editInput1);
-        //Input1.getText().toString();
-        //text1 = (TextView) findViewById(R.id.editInput1);
-        //text1.setText("Your calories are:"+text1.getText().toString());
+
         this.calories_input = (EditText) findViewById(R.id.editInput1);
         this.weight_input = (EditText) findViewById(R.id.editInput2);
-        this.gender_input = (EditText)findViewById(R.id.editInput3);
-        this.height_input = (EditText)findViewById(R.id.editInput4);
-        this.age_input = (EditText)findViewById(R.id.editInput5);
+        this.gender_input = (EditText) findViewById(R.id.editInput3);
+        this.height_input = (EditText) findViewById(R.id.editInput4);
+        this.age_input = (EditText) findViewById(R.id.editInput5);
         submitB = (Button) findViewById(R.id.submitButton);
         submitB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +44,7 @@ public class TextViewActivity extends AppCompatActivity {
                 user_height = Integer.valueOf(height_input.getText().toString());
                 user_age = Integer.valueOf(age_input.getText().toString());
 
+                standardCalories = getStandardCalories(user_weight, user_gender, user_height, user_age);
                 //TODO
                 /**
                  * to calculate if the user is healthy
@@ -53,7 +52,22 @@ public class TextViewActivity extends AppCompatActivity {
                  * Adult male: 66 + (6.3 x body weight in lbs.) + (12.9 x height in inches) - (6.8 x age in years) = BMR
                  * Adult female: 655 + (4.3 x weight in lbs.) + (4.7 x height in inches) - (4.7 x age in years) = BMR
                  */
+                if(user_calories < standardCalories){
+                    Intent i = new Intent(TextViewActivity.this, HealthyActivity.class);
+                    startActivity(i);
+                }
             }
         });
     }
+
+    private double getStandardCalories (int weight, String gender, int height, int age){
+        if (user_gender.equals("male") || user_gender.equals("Male") || user_gender.equals("MALE")) {
+            return 66 + (6.3 * weight) + (12.9 * height) - (6.8 * age);
+        }else if(user_gender.equals("female") || user_gender.equals("Female") || user_gender.equals("FEMALE")){
+            return 655+(4.3*weight)+(4.7*height)-(4.7*age);
+        }else{
+            return -1;
+        }
+    }
+
 }
