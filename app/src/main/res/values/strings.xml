@@ -2,4 +2,7 @@
     <string name="app_name">CalorieTracker</string>
     <string name="tv_total_calorie">Put your total calorie today:</string>
     <string name="tv_weight">Put your weight (lb):</string>
+    <string name="gender">Put your gender(male/female):</string>
+    <string name="height">Put your height (inch):</string>
+    <string name="age">Put your age:</string>
 </resources>
