@@ -6,16 +6,14 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/bt_textview"
+        android:id="@+id/unhealthPage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Check you are healthy or unhealthy today--->"
+        android:layout_height="match_parent"
+        android:text="Unfortunately, It seems like you've had too many calories today!"
         android:background="@color/design_default_color_surface"
-        android:textSize="20dp">
+        android:textSize="30dp">
 
     </Button>
 
 
 </LinearLayout>
-
-

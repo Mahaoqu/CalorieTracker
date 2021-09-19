@@ -1,4 +1,4 @@
-package edu.ncsu.calorietracker;
+package edu.ncsu.calorietracker.CheckHealthPage;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+
+import edu.ncsu.calorietracker.R;
 
 public class TextViewActivity extends AppCompatActivity {
 
@@ -52,8 +53,15 @@ public class TextViewActivity extends AppCompatActivity {
                  * Adult male: 66 + (6.3 x body weight in lbs.) + (12.9 x height in inches) - (6.8 x age in years) = BMR
                  * Adult female: 655 + (4.3 x weight in lbs.) + (4.7 x height in inches) - (4.7 x age in years) = BMR
                  */
-                if(user_calories < standardCalories){
+                if(standardCalories == -1){
+                    Intent i = new Intent(TextViewActivity.this, ErrorActivity.class);
+                    startActivity(i);
+                }
+                else if(user_calories <= standardCalories){
                     Intent i = new Intent(TextViewActivity.this, HealthyActivity.class);
+                    startActivity(i);
+                }else{
+                    Intent i = new Intent(TextViewActivity.this, UnhealthyActivity.class);
                     startActivity(i);
                 }
             }

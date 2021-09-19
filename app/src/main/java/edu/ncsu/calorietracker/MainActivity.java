@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import edu.ncsu.calorietracker.CheckHealthPage.TextViewActivity;
+
 public class MainActivity extends AppCompatActivity {
     private Button mbt_textView;
 
@@ -15,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.mbt_textView = (Button) findViewById(R.id.bt_textview);
-
         this.mbt_textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

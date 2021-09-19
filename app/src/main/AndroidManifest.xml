@@ -10,10 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CalorieTracker">
         <activity
-            android:name=".HealthyActivity"
+            android:name=".CheckHealthPage.ErrorActivity"
             android:exported="true" />
         <activity
-            android:name=".TextViewActivity"
+            android:name=".CheckHealthPage.UnhealthyActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CheckHealthPage.HealthyActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CheckHealthPage.TextViewActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
