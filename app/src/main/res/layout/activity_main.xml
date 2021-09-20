@@ -10,11 +10,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Check you are healthy or unhealthy today--->"
-        android:background="@color/design_default_color_surface"
-        android:textSize="20dp">
+
+        android:textSize="30dp">
 
     </Button>
 
+    <Button
+        android:id="@+id/bt_cal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="Calculate your calories--->"
+        android:textSize="30dp">
+
+    </Button>
 
 </LinearLayout>
 
