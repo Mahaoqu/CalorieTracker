@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/mahao/AndroidStudioProjects/CalorieTracker/app/src/main/res/drawable/ic_launcher_background.xml" value="0.16018518518518518" />
+        <entry key="..\:/Users/mahao/AndroidStudioProjects/CalorieTracker/app/src/main/res/layout/activity_cal_main.xml" value="0.5" />
+        <entry key="..\:/Users/mahao/AndroidStudioProjects/CalorieTracker/app/src/main/res/layout/activity_error.xml" value="0.2210144927536232" />
+        <entry key="..\:/Users/mahao/AndroidStudioProjects/CalorieTracker/app/src/main/res/layout/activity_healthy.xml" value="0.190625" />
+        <entry key="..\:/Users/mahao/AndroidStudioProjects/CalorieTracker/app/src/main/res/layout/activity_text_view.xml" value="0.18478260869565216" />
+        <entry key="..\:/Users/mahao/AndroidStudioProjects/CalorieTracker/app/src/main/res/layout/blank_fragment.xml" value="0.2210144927536232" />
         <entry key="app/src/main/res/layout/activity_cal_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_cal_result.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_error.xml" value="0.2115036231884058" />
@@ -23,7 +29,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.335" />
+        <option name="scale" value="0.2884963768115942" />
       </ProjectState>
     </option>
   </component>

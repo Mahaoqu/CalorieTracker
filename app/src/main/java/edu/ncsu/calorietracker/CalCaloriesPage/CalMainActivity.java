@@ -13,6 +13,8 @@ import android.widget.EditText;
 import edu.ncsu.calorietracker.CheckHealthPage.TextViewActivity;
 import edu.ncsu.calorietracker.MainActivity;
 import edu.ncsu.calorietracker.R;
+import edu.ncsu.calorietracker.databinding.ActivityCalMainBinding;
+import edu.ncsu.calorietracker.databinding.ActivityTextViewBinding;
 
 public class CalMainActivity extends AppCompatActivity implements TextWatcher, View.OnClickListener{
 
@@ -28,14 +30,15 @@ public class CalMainActivity extends AppCompatActivity implements TextWatcher, V
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cal_main);
+        ActivityCalMainBinding binding = ActivityCalMainBinding.inflate(getLayoutInflater());
+
+        setContentView(binding.getRoot());
+//        binding.etAmount
+
         amount = (EditText) findViewById(R.id.et_amount);
         this.btn_submit = (Button) findViewById(R.id.bt_cal) ;
-
         this.btn_increase = (Button) findViewById(R.id.btn_increase);
         this.btn_decrease = (Button) findViewById(R.id.btn_decrease);
-
-
 
         this.btn_increase.setOnClickListener(new View.OnClickListener() {
             @Override

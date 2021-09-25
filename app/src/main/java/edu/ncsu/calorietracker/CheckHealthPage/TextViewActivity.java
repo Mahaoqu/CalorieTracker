@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import edu.ncsu.calorietracker.R;
+
 import java.util.*;
 
 public class TextViewActivity extends AppCompatActivity {
@@ -39,7 +40,7 @@ public class TextViewActivity extends AppCompatActivity {
         submitB = (Button) findViewById(R.id.submitButton);
         submitB.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 try {
                     user_calories = Integer.valueOf(calories_input.getText().toString());
                     user_weight = Integer.valueOf(weight_input.getText().toString());
@@ -47,7 +48,7 @@ public class TextViewActivity extends AppCompatActivity {
                     user_height = Integer.valueOf(height_input.getText().toString());
                     user_age = Integer.valueOf(age_input.getText().toString());
                     standardCalories = getStandardCalories(user_weight, user_gender, user_height, user_age);
-                }catch (IllegalArgumentException e){
+                } catch (IllegalArgumentException e) {
                     System.out.println("Null Input");
                 }
                 //TODO
@@ -57,17 +58,16 @@ public class TextViewActivity extends AppCompatActivity {
                  * Adult male: 66 + (6.3 x body weight in lbs.) + (12.9 x height in inches) - (6.8 x age in years) = BMR
                  * Adult female: 655 + (4.3 x weight in lbs.) + (4.7 x height in inches) - (4.7 x age in years) = BMR
                  */
-                if(standardCalories == -1 || user_calories == standardCalories){
+                if (standardCalories == -1 || user_calories == standardCalories) {
                     Intent i = new Intent(TextViewActivity.this, ErrorActivity.class);
                     startActivity(i);
-                }
-                else if(user_calories < standardCalories){
+                } else if (user_calories < standardCalories) {
                     Intent i = new Intent(TextViewActivity.this, HealthyActivity.class);
                     startActivity(i);
-                }else if(user_calories > standardCalories){
+                } else if (user_calories > standardCalories) {
                     Intent i = new Intent(TextViewActivity.this, UnhealthyActivity.class);
                     startActivity(i);
-                }else{
+                } else {
                     Intent i = new Intent(TextViewActivity.this, ErrorActivity.class);
                     startActivity(i);
                 }
@@ -75,13 +75,13 @@ public class TextViewActivity extends AppCompatActivity {
         });
     }
 
-    private double getStandardCalories (int weight, String gender, int height, int age){
+    private double getStandardCalories(int weight, String gender, int height, int age) {
 
         if (user_gender.equals("male") || user_gender.equals("Male") || user_gender.equals("MALE")) {
             return 66 + (6.3 * weight) + (12.9 * height) - (6.8 * age);
-        }else if(user_gender.equals("female") || user_gender.equals("Female") || user_gender.equals("FEMALE")){
-            return 655+(4.3*weight)+(4.7*height)-(4.7*age);
-        }else{
+        } else if (user_gender.equals("female") || user_gender.equals("Female") || user_gender.equals("FEMALE")) {
+            return 655 + (4.3 * weight) + (4.7 * height) - (4.7 * age);
+        } else {
             return -1;
         }
     }
