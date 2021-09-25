@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="edu.ncsu.calorietracker.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_checkHealthFragment"
+            app:destination="@id/checkHealthFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_calMainFragment"
+            app:destination="@id/calMainFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="edu.ncsu.calorietracker.ui.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="edu.ncsu.calorietracker.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/calMainFragment"
+        android:name="edu.ncsu.calorietracker.ui.caldemo.CalMainFragment"
+        android:label="fragment_cal_main"
+        tools:layout="@layout/fragment_cal_main" />
+    <fragment
+        android:id="@+id/checkHealthFragment"
+        android:name="edu.ncsu.calorietracker.ui.caldemo.CheckHealthFragment"
+        android:label="fragment_check_health"
+        tools:layout="@layout/fragment_check_health" />
+</navigation>

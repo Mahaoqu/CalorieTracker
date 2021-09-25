@@ -3,7 +3,6 @@
     package="edu.ncsu.calorietracker">
 
     <application
-        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -13,19 +12,7 @@
             android:name=".CalCaloriesPage.CalMainActivity"
             android:exported="true" />
         <activity
-            android:name=".CheckHealthPage.ErrorActivity"
-            android:exported="true" />
-        <activity
-            android:name=".CheckHealthPage.UnhealthyActivity"
-            android:exported="true" />
-        <activity
-            android:name=".CheckHealthPage.HealthyActivity"
-            android:exported="true" />
-        <activity
-            android:name=".CheckHealthPage.TextViewActivity"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".MainNavActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
