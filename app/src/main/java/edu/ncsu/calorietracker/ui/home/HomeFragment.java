@@ -12,6 +12,7 @@ import androidx.navigation.Navigation;
 
 import edu.ncsu.calorietracker.R;
 import edu.ncsu.calorietracker.databinding.FragmentHomeBinding;
+import edu.ncsu.calorietracker.viewmodel.HomeViewModel;
 
 public class HomeFragment extends Fragment {
 

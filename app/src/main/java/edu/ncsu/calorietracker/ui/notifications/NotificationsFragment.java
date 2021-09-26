@@ -12,8 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import edu.ncsu.calorietracker.R;
 import edu.ncsu.calorietracker.databinding.FragmentNotificationsBinding;
+import edu.ncsu.calorietracker.viewmodel.NotificationsViewModel;
 
 public class NotificationsFragment extends Fragment {
 

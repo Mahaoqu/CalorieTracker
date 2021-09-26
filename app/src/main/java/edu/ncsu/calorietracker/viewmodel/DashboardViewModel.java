@@ -1,4 +1,4 @@
-package edu.ncsu.calorietracker.ui.dashboard;
+package edu.ncsu.calorietracker.viewmodel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
