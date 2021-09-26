@@ -50,6 +50,8 @@ public class CheckHealthFragment extends Fragment {
                         standardCalories = getStandardCalories(user_weight, user_gender, user_height, user_age);
                     } catch (IllegalArgumentException e) {
                         System.out.println("Null Input");
+                        MaterialAlertDialogBuilder dialog = new MaterialAlertDialogBuilder(getContext());
+                        dialog.setMessage("Invalid Input");
                     }
 
                     //TODO
@@ -60,8 +62,8 @@ public class CheckHealthFragment extends Fragment {
                      * Adult female: 655 + (4.3 x weight in lbs.) + (4.7 x height in inches) - (4.7 x age in years) = BMR
                      */
                     MaterialAlertDialogBuilder dialog = new MaterialAlertDialogBuilder(getContext());
-                    if (standardCalories == -1 || user_calories == standardCalories) {
-                        dialog.setMessage("Error");
+                    if (standardCalories <= 0 || user_calories == standardCalories) {
+                        dialog.setMessage("Invalid Input");
                     } else if (user_calories < standardCalories) {
                         dialog.setMessage("Congratulations! You are very healthy!");
                     } else if (user_calories > standardCalories) {
