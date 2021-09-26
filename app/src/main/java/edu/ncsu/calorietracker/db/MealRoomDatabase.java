@@ -51,9 +51,9 @@ abstract class MealRoomDatabase extends RoomDatabase {
                 MealDao dao = INSTANCE.MealDao();
                 dao.deleteAll();
 
-                Meal Meal = new Meal("code code code");
+                Meal Meal = new Meal("code code code", 300);
                 dao.insert(Meal);
-                Meal = new Meal("eat eat eat");
+                Meal = new Meal("eat eat eat", 500);
                 dao.insert(Meal);
             });
         }
