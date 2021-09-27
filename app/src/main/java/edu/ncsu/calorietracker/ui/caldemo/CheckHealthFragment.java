@@ -79,9 +79,9 @@ public class CheckHealthFragment extends Fragment {
 
     private double getStandardCalories(int weight, String gender, int height, int age) {
 
-        if (user_gender.equals("male") || user_gender.equals("Male") || user_gender.equals("MALE")) {
+        if (gender.equals("male") || gender.equals("Male") || gender.equals("MALE")) {
             return 66 + (6.3 * weight) + (12.9 * height) - (6.8 * age);
-        } else if (user_gender.equals("female") || user_gender.equals("Female") || user_gender.equals("FEMALE")) {
+        } else if (gender.equals("female") || gender.equals("Female") || gender.equals("FEMALE")) {
             return 655 + (4.3 * weight) + (4.7 * height) - (4.7 * age);
         } else {
             return -1;
