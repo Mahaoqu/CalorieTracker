@@ -2,12 +2,16 @@ package edu.ncsu.calorietracker.db;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
+// Primary Key of meals are their name
+// They also contain an int called calorie that tracks the calorie of the meal
 @Dao
 public interface MealDao {
     // LiveData is a data holder class that can be observed within a given lifecycle.
@@ -20,6 +24,15 @@ public interface MealDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Meal meal);
 
+    @Query("SELECT calorie FROM meal_table WHERE meal = :mealName")
+    int getCalorie(String mealName);
+
     @Query("DELETE FROM meal_table")
     void deleteAll();
+
+    @Update
+    void updateMeal(Meal meal);
+
+    @Delete
+    void deleteMeal(Meal meal);
 }
