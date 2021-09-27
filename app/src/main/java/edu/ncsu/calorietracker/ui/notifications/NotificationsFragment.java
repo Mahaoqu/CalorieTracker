@@ -28,8 +28,26 @@ public class NotificationsFragment extends Fragment {
         binding = FragmentNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.nameTextView;
-        notificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView nameView = binding.nameTextView;
+        notificationsViewModel.setName("Rob");
+        notificationsViewModel.getName().observe(getViewLifecycleOwner(), nameView::setText);
+
+        final TextView weightView = binding.weightTextView;
+        notificationsViewModel.setWeight(150);
+        notificationsViewModel.getWeight().observe(getViewLifecycleOwner(), weightView::setText);
+
+        final TextView genderView = binding.genderTextView;
+        notificationsViewModel.setGender("Male");
+        notificationsViewModel.getGender().observe(getViewLifecycleOwner(), genderView::setText);
+
+        final TextView heightView = binding.heightTextView;
+        notificationsViewModel.setHeight(160);
+        notificationsViewModel.getHeight().observe(getViewLifecycleOwner(), heightView::setText);
+
+        final TextView ageView = binding.ageTextView;
+        notificationsViewModel.setAge(21);
+        notificationsViewModel.getAge().observe(getViewLifecycleOwner(), ageView::setText);
+
         return root;
     }
 
