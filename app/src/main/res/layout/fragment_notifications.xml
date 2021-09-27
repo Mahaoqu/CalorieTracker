@@ -36,21 +36,9 @@
             >
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layout_image"
-                android:layout_width="0dp"
-                app:layout_constraintWidth_percent="0.7"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="20dp"
-                android:textColorHint="#808080"
-                app:layout_constraintTop_toTopOf="parent"
-                >
 
-            </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layout_first_name"
+                android:id="@+id/layout_name"
                 android:layout_width="0dp"
                 app:layout_constraintWidth_percent="0.7"
                 android:layout_height="wrap_content"
@@ -58,34 +46,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="14dp"
                 android:textColorHint="#808080"
-                app:layout_constraintTop_toBottomOf="@+id/layout_image"
-                >
-
-                <EditText
-                    android:id="@+id/et_first_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="First Name"
-                    android:gravity="center"
-                    android:padding="30dp"
-                    android:textColor="#000000"
-                    android:textColorHint="#808080"
-                    android:background="#00000000"
-                    android:textSize="15sp"
-                    />
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layout_last_name"
-                android:layout_width="0dp"
-                app:layout_constraintWidth_percent="0.7"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="14dp"
-                android:textColorHint="#808080"
-                app:layout_constraintTop_toBottomOf="@+id/layout_first_name"
                 >
 
                 <EditText
@@ -94,14 +54,13 @@
                     android:layout_height="wrap_content"
                     android:hint="Name"
                     android:gravity="center"
-                    android:padding="10dp"
+                    android:padding="30dp"
                     android:textColor="#000000"
                     android:textColorHint="#808080"
                     android:background="#00000000"
                     android:textSize="15sp"
                     />
             </com.google.android.material.textfield.TextInputLayout>
-
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/layout_gender"
@@ -112,7 +71,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="14dp"
                 android:textColorHint="#808080"
-                app:layout_constraintTop_toBottomOf="@+id/layout_last_name"
+                app:layout_constraintTop_toBottomOf="@+id/layout_name"
                 >
 
                 <EditText
@@ -255,9 +214,7 @@
                 android:textAllCaps="false"
                 android:layout_marginTop="30dp"
                 app:layout_constraintWidth_percent="0.7"
-                style="?android:attr/borderlessButtonStyle"
-                android:elevation="2dp"
-                android:onClick="performEditProfile"
+
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
