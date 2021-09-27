@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import edu.ncsu.calorietracker.R;
+import edu.ncsu.calorietracker.databinding.ActivityMainNavBinding;
 import edu.ncsu.calorietracker.databinding.FragmentNotificationsBinding;
 import edu.ncsu.calorietracker.viewmodel.NotificationsViewModel;
 
@@ -19,6 +21,17 @@ public class NotificationsFragment extends Fragment {
 
     private NotificationsViewModel notificationsViewModel;
     private FragmentNotificationsBinding binding;
+
+    public NotificationsFragment() {
+        // Required empty public constructor
+    }
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -28,6 +41,8 @@ public class NotificationsFragment extends Fragment {
         binding = FragmentNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        final TextView textView = binding.tvProfile;
+        notificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         final TextView nameView = binding.nameTextView;
         notificationsViewModel.setName("Rob");
         notificationsViewModel.getName().observe(getViewLifecycleOwner(), nameView::setText);
@@ -56,4 +71,5 @@ public class NotificationsFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
 }
