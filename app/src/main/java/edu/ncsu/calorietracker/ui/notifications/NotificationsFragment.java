@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
@@ -24,10 +25,11 @@ public class NotificationsFragment extends Fragment {
 
     private NotificationsViewModel notificationsViewModel;
     private FragmentNotificationsBinding binding;
+    public EditUserProfileFragment e;
 
     // Database
     private UserDatabase mUserDb;
-
+    String[] user_profile = new String[5];
     public NotificationsFragment() {
         // Required empty public constructor
     }
@@ -35,16 +37,35 @@ public class NotificationsFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        // Initializing database
-        mUserDb = UserDatabase.getInstance(this.getContext());
 
+
+        User user1 = null;
+        try {
+            user1 = mUserDb.userDao().getUser(1);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+
+        mUserDb = UserDatabase.getInstance(this.getContext());
         // This is how to create a user
+
         User user = new User("Rob", "150", "Male", "180", "30");
         mUserDb.userDao().insertUser(user);
 
+        //e = (EditUserProfileFragment)getActivity().getSupportFragmentManager().findFragmentByTag("p");
+
+
         // This is how to update a user. Make sure to set the user's id to 1 to update the correct user and not insert a new one
-        user.setWeight("149");
         user.setId(1);
+        user.setWeight("100");
+        if(user1 != null){
+            user.setUsername(user1.getUsername());
+            user.setWeight(user1.getWeight());
+            user.setGender(user1.getGender());
+            user.setHeight(user1.getHeight());
+            user.setAge(user1.getAge());
+        }
+
         mUserDb.userDao().updateUser(user);
 
         super.onCreate(savedInstanceState);
@@ -65,6 +86,7 @@ public class NotificationsFragment extends Fragment {
 
         // This is how to get the user, since we only have one user using app, it's id is 1
         User user = mUserDb.userDao().getUser(1);
+
 
         final TextView nameView = binding.nameTextView;
         notificationsViewModel.setName(user.getUsername());
@@ -87,7 +109,9 @@ public class NotificationsFragment extends Fragment {
         notificationsViewModel.getAge().observe(getViewLifecycleOwner(), ageView::setText);
 
         edit.setOnClickListener(
-                view -> Navigation.findNavController(view).navigate(R.id.editUserProfileFragment)
+                view -> {
+                    Navigation.findNavController(view).navigate(R.id.editUserProfileFragment);
+                }
         );
         return root;
     }
