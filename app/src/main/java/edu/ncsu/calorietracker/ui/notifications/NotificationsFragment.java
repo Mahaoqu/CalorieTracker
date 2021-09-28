@@ -39,13 +39,13 @@ public class NotificationsFragment extends Fragment {
         mUserDb = UserDatabase.getInstance(this.getContext());
 
         // This is how to create a user
-        User user = new User("Rob", "150", "Male", "180", "30");
-        mUserDb.userDao().insertUser(user);
+        // User user = new User("Rob", "150", "Male", "180", "30");
+        /// mUserDb.userDao().insertUser(user);
 
         // This is how to update a user. Make sure to set the user's id to 1 to update the correct user and not insert a new one
-        user.setWeight("149");
-        user.setId(1);
-        mUserDb.userDao().updateUser(user);
+        // user.setWeight("149");
+        // user.setId(1);
+        // mUserDb.userDao().updateUser(user);
 
         super.onCreate(savedInstanceState);
     }
