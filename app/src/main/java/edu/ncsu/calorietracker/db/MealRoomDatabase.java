@@ -12,7 +12,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Database(entities = {Meal.class}, version = 1, exportSchema = false)
-abstract class MealRoomDatabase extends RoomDatabase {
+public abstract class MealRoomDatabase extends RoomDatabase {
 
     abstract MealDao MealDao();
 

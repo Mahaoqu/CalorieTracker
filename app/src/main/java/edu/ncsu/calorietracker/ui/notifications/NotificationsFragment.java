@@ -17,12 +17,14 @@ import androidx.navigation.Navigation;
 import edu.ncsu.calorietracker.R;
 import edu.ncsu.calorietracker.databinding.ActivityMainNavBinding;
 import edu.ncsu.calorietracker.databinding.FragmentNotificationsBinding;
+import edu.ncsu.calorietracker.db.MealRoomDatabase;
 import edu.ncsu.calorietracker.viewmodel.NotificationsViewModel;
 
 public class NotificationsFragment extends Fragment {
 
     private NotificationsViewModel notificationsViewModel;
     private FragmentNotificationsBinding binding;
+    private UserDatabase mUserDb;
 
     public NotificationsFragment() {
         // Required empty public constructor
@@ -31,6 +33,9 @@ public class NotificationsFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        mUserDb = UserDatabase.getInstance(this.getContext());
+        User user = new User("Rob", "150", "Male", "180", "30");
+        mUserDb.userDao().insertUser(user);
         super.onCreate(savedInstanceState);
     }
 
@@ -46,24 +51,26 @@ public class NotificationsFragment extends Fragment {
 
         // final TextView textView = binding.tvProfile;
         // notificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        User user = mUserDb.userDao().getUser(1);
+
         final TextView nameView = binding.nameTextView;
-        notificationsViewModel.setName("Rob");
+        notificationsViewModel.setName(user.getUsername());
         notificationsViewModel.getName().observe(getViewLifecycleOwner(), nameView::setText);
 
         final TextView weightView = binding.weightTextView;
-        notificationsViewModel.setWeight("150");
+        notificationsViewModel.setWeight(user.getWeight());
         notificationsViewModel.getWeight().observe(getViewLifecycleOwner(), weightView::setText);
 
         final TextView genderView = binding.genderTextView;
-        notificationsViewModel.setGender("Male");
+        notificationsViewModel.setGender(user.getGender());
         notificationsViewModel.getGender().observe(getViewLifecycleOwner(), genderView::setText);
 
         final TextView heightView = binding.heightTextView;
-        notificationsViewModel.setHeight("160");
+        notificationsViewModel.setHeight(user.getHeight());
         notificationsViewModel.getHeight().observe(getViewLifecycleOwner(), heightView::setText);
 
         final TextView ageView = binding.ageTextView;
-        notificationsViewModel.setAge("21");
+        notificationsViewModel.setAge(user.getAge());
         notificationsViewModel.getAge().observe(getViewLifecycleOwner(), ageView::setText);
 
         edit.setOnClickListener(
