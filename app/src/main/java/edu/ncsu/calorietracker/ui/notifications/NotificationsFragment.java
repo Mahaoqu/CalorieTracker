@@ -48,7 +48,7 @@ public class NotificationsFragment extends Fragment {
         notificationsViewModel.getName().observe(getViewLifecycleOwner(), nameView::setText);
 
         final TextView weightView = binding.weightTextView;
-        notificationsViewModel.setWeight(150);
+        notificationsViewModel.setWeight("150");
         notificationsViewModel.getWeight().observe(getViewLifecycleOwner(), weightView::setText);
 
         final TextView genderView = binding.genderTextView;
@@ -56,11 +56,11 @@ public class NotificationsFragment extends Fragment {
         notificationsViewModel.getGender().observe(getViewLifecycleOwner(), genderView::setText);
 
         final TextView heightView = binding.heightTextView;
-        notificationsViewModel.setHeight(160);
+        notificationsViewModel.setHeight("160");
         notificationsViewModel.getHeight().observe(getViewLifecycleOwner(), heightView::setText);
 
         final TextView ageView = binding.ageTextView;
-        notificationsViewModel.setAge(21);
+        notificationsViewModel.setAge("21");
         notificationsViewModel.getAge().observe(getViewLifecycleOwner(), ageView::setText);
 
         return root;

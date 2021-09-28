@@ -7,12 +7,12 @@ import androidx.lifecycle.ViewModel;
 public class NotificationsViewModel extends ViewModel {
 
     private MutableLiveData<String> name;
-    private MutableLiveData<Integer> weight;
+    private MutableLiveData<String> weight;
     private MutableLiveData<String> weightText;
     private MutableLiveData<String> gender;
-    private MutableLiveData<Integer> height;
+    private MutableLiveData<String> height;
     private MutableLiveData<String> heightText;
-    private MutableLiveData<Integer> age;
+    private MutableLiveData<String> age;
     private MutableLiveData<String> ageText;
 
     public NotificationsViewModel() {
@@ -30,23 +30,20 @@ public class NotificationsViewModel extends ViewModel {
     public void setName(String text) {name.setValue("Name: " + text);}
 
     public LiveData<String> getWeight() {return weightText;}
-    public void setWeight(int weightIn) {
-        weight.setValue(weightIn);
-        weightText.setValue("Weight: " + weight);
+    public void setWeight(String weightIn) {
+        weightText.setValue("Weight: " + weightIn);
     }
 
     public LiveData<String> getGender() {return gender;}
     public void setGender(String text) {gender.setValue("Gender: " + text);}
 
     public LiveData<String> getHeight() {return heightText;}
-    public void setHeight(int heightIn) {
-        height.setValue(heightIn);
-        heightText.setValue("Height: " + height);
+    public void setHeight(String heightIn) {
+        heightText.setValue("Height: " + heightIn);
     }
 
     public LiveData<String> getAge() {return ageText;}
-    public void setAge(int ageIn) {
-        age.setValue(ageIn);
-        ageText.setValue("Age: " + age);
+    public void setAge(String ageIn) {
+        ageText.setValue("Age: " + ageIn);
     }
 }
