@@ -4,69 +4,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.notifications.NotificationsFragment">
+    tools:context=".ui.notifications.EditUserProfileFragment">
 
-    <TextView
-        android:id="@+id/nameTextView"
+    <EditText
+        android:id="@+id/nameEt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:textSize="20sp"
+        android:inputType="text"
+        android:ems="14"
+        app:layout_constraintBottom_toTopOf="@id/weightEt"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/weightEt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:textSize="20sp"
-        android:text="Name: "
+        android:inputType="number"
+        android:ems="14"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/weightTextView"/>
+        app:layout_constraintTop_toBottomOf="@id/nameEt"
+        app:layout_constraintBottom_toTopOf="@id/genderEt"/>
 
-    <TextView
-        android:id="@+id/weightTextView"
+    <EditText
+        android:id="@+id/genderEt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:textSize="20sp"
-        android:text="Weight: "
+        android:inputType="text"
+        android:ems="14"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nameTextView"
-        app:layout_constraintBottom_toTopOf="@id/genderTextView"/>
+        app:layout_constraintTop_toBottomOf="@id/weightEt"
+        app:layout_constraintBottom_toTopOf="@id/heightEt"/>
 
-    <TextView
-        android:id="@+id/genderTextView"
+    <EditText
+        android:id="@+id/heightEt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:textSize="20sp"
-        android:text="Gender: "
+        android:ems="14"
+        android:inputType="number"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/weightTextView"
-        app:layout_constraintBottom_toTopOf="@id/heightTextView"/>
+        app:layout_constraintTop_toBottomOf="@id/genderEt"
+        app:layout_constraintBottom_toTopOf="@id/ageEt"/>
 
-    <TextView
-        android:id="@+id/heightTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:textSize="20sp"
-        android:text="Height: "
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/genderTextView"
-        app:layout_constraintBottom_toTopOf="@id/ageTextView"/>
-
-    <TextView
-        android:id="@+id/ageTextView"
+    <EditText
+        android:id="@+id/ageEt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="20dp"
         android:textSize="20sp"
-        android:text="Age: "
+        android:inputType="number"
+        android:ems="14"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/heightTextView"
+        app:layout_constraintTop_toBottomOf="@id/heightEt"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+
     <Button
-        android:id="@+id/btEditProfile"
+        android:id="@+id/updateProfile"
         android:layout_width="410dp"
         android:layout_height="49dp"
-        android:text="Edit Your Profile"
+        android:text="Update"
         android:textSize="24dp"
-        tools:ignore="MissingConstraints"/>
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
