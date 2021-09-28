@@ -1,9 +1,11 @@
 package edu.ncsu.calorietracker.ui.notifications;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import edu.ncsu.calorietracker.R;
 import edu.ncsu.calorietracker.databinding.ActivityMainNavBinding;
@@ -40,7 +43,7 @@ public class NotificationsFragment extends Fragment {
 
         binding = FragmentNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
+        Button edit = binding.btEditProfile;
         // final TextView textView = binding.tvProfile;
         // notificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         final TextView nameView = binding.nameTextView;
@@ -63,6 +66,15 @@ public class NotificationsFragment extends Fragment {
         notificationsViewModel.setAge("21");
         notificationsViewModel.getAge().observe(getViewLifecycleOwner(), ageView::setText);
 
+
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), EditUserProfileFragment.class);
+                //startActivity(i);
+                Navigation.findNavController(view).navigate(R.layout.fragment_notifications);
+            }
+        });
         return root;
     }
 
