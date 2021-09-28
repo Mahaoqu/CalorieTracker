@@ -67,14 +67,9 @@ public class NotificationsFragment extends Fragment {
         notificationsViewModel.getAge().observe(getViewLifecycleOwner(), ageView::setText);
 
 
-        edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), EditUserProfileFragment.class);
-                //startActivity(i);
-                Navigation.findNavController(view).navigate(R.layout.fragment_notifications);
-            }
-        });
+        edit.setOnClickListener(
+                view -> Navigation.findNavController(view).navigate(R.id.editUserProfileFragment)
+        );
         return root;
     }
 
