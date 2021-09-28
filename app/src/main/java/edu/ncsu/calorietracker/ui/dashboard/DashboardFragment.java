@@ -17,10 +17,15 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import java.util.ArrayList;
+
 import edu.ncsu.calorietracker.databinding.FragmentDashboardBinding;
+import edu.ncsu.calorietracker.db.Meal;
 import edu.ncsu.calorietracker.viewmodel.DashboardViewModel;
 
 public class DashboardFragment extends Fragment {
@@ -52,6 +57,17 @@ public class DashboardFragment extends Fragment {
                     .setNegativeButton("cancel", null)
                     .show();
         });
+
+
+        final WordListAdapter adapter = new WordListAdapter(new WordListAdapter.WordDiff());
+        binding.list.setAdapter(adapter);
+        binding.list.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter.submitList(new ArrayList<Meal>(){{
+            add(new Meal("breakfast",200));
+            add(new Meal("lunch",800));
+            add(new Meal("dinner",500));
+        }});
+
 //        final TextView textView = binding.textDashboard;
 //        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
 //            @Override
