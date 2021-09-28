@@ -24,6 +24,8 @@ public class NotificationsFragment extends Fragment {
 
     private NotificationsViewModel notificationsViewModel;
     private FragmentNotificationsBinding binding;
+
+    // Database
     private UserDatabase mUserDb;
 
     public NotificationsFragment() {
@@ -33,9 +35,18 @@ public class NotificationsFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        // Initializing database
         mUserDb = UserDatabase.getInstance(this.getContext());
+
+        // This is how to create a user
         User user = new User("Rob", "150", "Male", "180", "30");
         mUserDb.userDao().insertUser(user);
+
+        // This is how to update a user. Make sure to set the user's id to 1 to update the correct user and not insert a new one
+        user.setWeight("149");
+        user.setId(1);
+        mUserDb.userDao().updateUser(user);
+
         super.onCreate(savedInstanceState);
     }
 
@@ -51,6 +62,8 @@ public class NotificationsFragment extends Fragment {
 
         // final TextView textView = binding.tvProfile;
         // notificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
+        // This is how to get the user, since we only have one user using app, it's id is 1
         User user = mUserDb.userDao().getUser(1);
 
         final TextView nameView = binding.nameTextView;
