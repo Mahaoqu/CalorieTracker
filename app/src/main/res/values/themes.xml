@@ -1,5 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.CalorieTracker" parent="Theme.Material3.Light">
+    <style name="Theme.CalorieTracker" parent="Theme.Material3.Light.NoActionBar">
     </style>
+
+    <style name="Theme.CalorieTracker.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.CalorieTracker.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

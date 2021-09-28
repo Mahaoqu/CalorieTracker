@@ -9,9 +9,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CalorieTracker">
         <activity
-            android:name=".CalCaloriesPage.CalMainActivity"
-            android:exported="true" />
-        <activity
             android:name=".MainNavActivity"
             android:exported="true">
             <intent-filter>

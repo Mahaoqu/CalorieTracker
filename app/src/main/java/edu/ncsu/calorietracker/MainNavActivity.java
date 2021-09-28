@@ -1,6 +1,7 @@
 package edu.ncsu.calorietracker;
 
 import android.os.Bundle;
+import android.widget.Toolbar;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -22,7 +23,7 @@ public class MainNavActivity extends AppCompatActivity {
 
         binding = ActivityMainNavBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        setSupportActionBar(binding.toolbar);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -32,6 +33,9 @@ public class MainNavActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main_nav);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+
+        // Who knows why it works?
+        // https://code.luasoftware.com/tutorials/android/android-appbarlayout-with-bottomnavigationview-hide-toolbar-on-scroll-with-fixed-bottomnavigationview/
     }
 
 }

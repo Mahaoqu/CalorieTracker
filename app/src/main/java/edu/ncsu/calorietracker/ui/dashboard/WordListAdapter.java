@@ -6,31 +6,35 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import edu.ncsu.calorietracker.databinding.RecyclerviewItemBinding;
 import edu.ncsu.calorietracker.db.Meal;
 import edu.ncsu.calorietracker.R;
 
 public class WordListAdapter extends ListAdapter<Meal, WordListAdapter.WordViewHolder> {
 
     public static class WordViewHolder extends RecyclerView.ViewHolder {
-        private final TextView wordItemView;
 
-        private WordViewHolder(View itemView) {
-            super(itemView);
-            wordItemView = itemView.findViewById(R.id.textView);
+        RecyclerviewItemBinding binding;
+
+        private WordViewHolder(RecyclerviewItemBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
 
-        public void bind(String text) {
-            wordItemView.setText(text);
+        public void bind(Meal meal) {
+            binding.mealCal.setText(Integer.toString(meal.getCalorie()));
+            binding.mealName.setText(meal.getMeal());
         }
 
         static WordViewHolder create(ViewGroup parent) {
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.recyclerview_item, parent, false);
-            return new WordViewHolder(view);
+            return new WordViewHolder(
+                    RecyclerviewItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false)
+            );
         }
     }
 
@@ -38,15 +42,16 @@ public class WordListAdapter extends ListAdapter<Meal, WordListAdapter.WordViewH
         super(diffCallback);
     }
 
+    @NonNull
     @Override
-    public WordViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public WordViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return WordViewHolder.create(parent);
     }
 
     @Override
     public void onBindViewHolder(WordViewHolder holder, int position) {
         Meal current = getItem(position);
-        holder.bind(current.getMeal());
+        holder.bind(current);
     }
 
     static class WordDiff extends DiffUtil.ItemCallback<Meal> {

@@ -11,7 +11,7 @@
         style="?attr/extendedFloatingActionButtonPrimaryStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|left"
+        android:layout_gravity="bottom|right"
         android:layout_margin="20dp"
         android:text="NEW MEAL"
         app:icon="@drawable/ic_add_24px" />
