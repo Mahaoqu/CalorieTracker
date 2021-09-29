@@ -52,14 +52,7 @@ public class NotificationsFragment extends Fragment {
             defaultUser.setId(1);
             mUserDb.userDao().insertUser(defaultUser);
         }
-
-        //e = (EditUserProfileFragment)getActivity().getSupportFragmentManager().findFragmentByTag("p");
-
         // This is how to update a user. There will always be a user in the database with id of 1
-        // User user2;
-        // user2 = new User("User100", "500", "Male", "200", "20");
-        // user2.setId(1);
-        // mUserDb.userDao().updateUser(user2);
 
         super.onCreate(savedInstanceState);
     }
