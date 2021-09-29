@@ -22,14 +22,14 @@ import edu.ncsu.calorietracker.db.entity.User;
 @TypeConverters(DateConverter.class)
 public abstract class AppDatabase extends RoomDatabase {
 
-    abstract MealDao mealDao();
+    public abstract MealDao mealDao();
 
     public abstract UserDao userDao();
 
     // marking the instance as volatile to ensure atomic access to the variable
     private static volatile AppDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
-    static final ExecutorService databaseWriteExecutor =
+    public static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     static public AppDatabase getInstance(final Context context) {

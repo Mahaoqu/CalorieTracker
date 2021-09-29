@@ -1,4 +1,5 @@
 package edu.ncsu.calorietracker.ui.profile;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,22 +18,13 @@ import edu.ncsu.calorietracker.R;
 import edu.ncsu.calorietracker.databinding.FragmentEditUserProfileBinding;
 import edu.ncsu.calorietracker.db.AppDatabase;
 import edu.ncsu.calorietracker.db.entity.User;
-import edu.ncsu.calorietracker.viewmodel.NotificationsViewModel;
+import edu.ncsu.calorietracker.viewmodel.ProfileViewModel;
 
 
 public class EditUserProfileFragment extends Fragment {
 
-    private NotificationsViewModel notificationsViewModel;
+    private ProfileViewModel profileViewModel;
     private FragmentEditUserProfileBinding binding;
-
-    public String nameView;
-    public String weightView;
-    public String genderView;
-    public String heightView;
-    public String ageView;
-
-
-    private AppDatabase mUserDb;
 
     public EditUserProfileFragment() {
         // Required empty public constructor
@@ -41,11 +33,7 @@ public class EditUserProfileFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        mUserDb = AppDatabase.getInstance(this.getContext());
-        User user = new User(nameView, weightView, genderView, heightView, ageView);
-        mUserDb.userDao().insertUser(user);
-        user.setId(1);
-        mUserDb.userDao().updateUser(user);
+        profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
         super.onCreate(savedInstanceState);
     }
 
@@ -53,42 +41,26 @@ public class EditUserProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        notificationsViewModel =
-                new ViewModelProvider(this).get(NotificationsViewModel.class);
-
         binding = FragmentEditUserProfileBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        Button edit = binding.updateProfile;
 
+        binding.updateProfile.setOnClickListener(view -> {
 
-        edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            String nameView = binding.nameEt.getText().toString();
+            String weightView = binding.weightEt.getText().toString();
+            String genderView = binding.genderEt.getText().toString();
+            String heightView = binding.heightEt.getText().toString();
+            String ageView = binding.ageEt.getText().toString();
 
-                nameView = binding.nameEt.getText().toString();
-                weightView = binding.weightEt.getText().toString();
-                genderView = binding.genderEt.getText().toString();
-                heightView = binding.heightEt.getText().toString();
-                ageView = binding.ageEt.getText().toString();
-
+            if (nameView.equals("") || weightView.equals("") || genderView.equals("") || heightView.equals("") || ageView.equals("")) {
                 MaterialAlertDialogBuilder dialog = new MaterialAlertDialogBuilder(getContext());
-                if (nameView.equals("") || weightView.equals("") || genderView.equals("") || heightView.equals("") || ageView.equals("")) {
-                    dialog.setMessage("not complete");
-                    dialog.show();
-                } else {
-                    User user = mUserDb.userDao().getUser(1);
-                    user.setAge(ageView);
-                    user.setHeight(heightView);
-                    user.setWeight(weightView);
-                    user.setGender(genderView);
-                    user.setUsername(nameView);
-                    user.setId(1);
-                    mUserDb.userDao().updateUser(user);
-                    Navigation.findNavController(view).navigate(R.id.navigation_notifications);
-                }
+                dialog.setMessage("not complete");
+                dialog.show();
+            } else {
+                profileViewModel.setUser(new User(nameView, weightView, genderView, heightView, ageView));
+                Navigation.findNavController(view).navigate(R.id.navigation_notifications);
             }
         });
-
         return root;
     }
 

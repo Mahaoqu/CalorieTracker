@@ -1,4 +1,4 @@
-package edu.ncsu.calorietracker.db;
+package edu.ncsu.calorietracker.repository;
 
 import android.app.Application;
 
@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
+import edu.ncsu.calorietracker.db.AppDatabase;
 import edu.ncsu.calorietracker.db.dao.MealDao;
 import edu.ncsu.calorietracker.db.entity.Meal;
 
@@ -28,9 +29,9 @@ public class MealRepository {
 
     // You must call this on a non-UI thread or your app will throw an exception. Room ensures
     // that you're not doing any long running operations on the main thread, blocking the UI.
-    void insert(Meal Meal) {
-        AppDatabase.databaseWriteExecutor.execute(() -> {
-            mMealDao.insert(Meal);
-        });
-    }
+//    void insert(Meal Meal) {
+//        AppDatabase.databaseWriteExecutor.execute(() -> {
+//            mMealDao.insert(Meal);
+//        });
+//    }
 }
