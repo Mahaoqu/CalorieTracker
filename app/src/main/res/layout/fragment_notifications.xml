@@ -11,8 +11,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:text="Name: "
+        android:textColor="#000000"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/weightTextView"/>
@@ -22,7 +23,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:textSize="20sp"
+        android:textSize="25sp"
+        android:textColor="#000000"
         android:text="Weight: "
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nameTextView"
@@ -33,7 +35,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:textSize="20sp"
+        android:textSize="25sp"
+        android:textColor="#000000"
         android:text="Gender: "
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/weightTextView"
@@ -44,7 +47,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:textSize="20sp"
+        android:textSize="25sp"
+        android:textColor="#000000"
         android:text="Height: "
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/genderTextView"
@@ -56,17 +60,26 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="20dp"
-        android:textSize="20sp"
+        android:textSize="25sp"
+        android:textColor="#000000"
         android:text="Age: "
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/heightTextView"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
     <Button
         android:id="@+id/btEditProfile"
-        android:layout_width="410dp"
-        android:layout_height="49dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Edit Your Profile"
-        android:textSize="24dp"
-        tools:ignore="MissingConstraints"/>
+        android:textSize="20dp"
+        android:textColor="#FFFFFFFF"
+        android:background="@color/design_default_color_primary"
+        style="?android:attr/borderlessButtonStyle"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@id/ageTextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+         />
 </androidx.constraintlayout.widget.ConstraintLayout>

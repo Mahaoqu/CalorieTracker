@@ -13,8 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:textSize="20sp"
+        android:hint="Your Name: "
         android:inputType="text"
-        android:ems="14"
+        android:ems="16"
         app:layout_constraintBottom_toTopOf="@id/weightEt"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,8 +26,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:textSize="20sp"
+        android:hint="Your Weight: "
         android:inputType="number"
-        android:ems="14"
+        android:ems="16"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nameEt"
         app:layout_constraintBottom_toTopOf="@id/genderEt"/>
@@ -38,7 +40,8 @@
         android:layout_marginStart="20dp"
         android:textSize="20sp"
         android:inputType="text"
-        android:ems="14"
+        android:hint="Your Gender: "
+        android:ems="16"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/weightEt"
         app:layout_constraintBottom_toTopOf="@id/heightEt"/>
@@ -49,7 +52,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:textSize="20sp"
-        android:ems="14"
+        android:hint="Your Height: "
+        android:ems="16"
         android:inputType="number"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/genderEt"
@@ -61,20 +65,25 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="20dp"
+        android:hint="Your Age: "
         android:textSize="20sp"
         android:inputType="number"
-        android:ems="14"
+        android:ems="16"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/heightEt"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-
     <Button
         android:id="@+id/updateProfile"
-        android:layout_width="410dp"
-        android:layout_height="49dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="404dp"
+        android:layout_height="45dp"
+        android:background="@color/design_default_color_primary"
         android:text="Update"
-        android:textSize="24dp"
-        tools:ignore="MissingConstraints" />
+        android:textColor="#FFFFFFFF"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ageEt"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

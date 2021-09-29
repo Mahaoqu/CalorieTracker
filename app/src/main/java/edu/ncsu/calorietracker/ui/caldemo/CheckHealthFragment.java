@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import java.sql.ResultSet;
+
 import edu.ncsu.calorietracker.databinding.FragmentCheckHealthBinding;
 import edu.ncsu.calorietracker.ui.notifications.User;
 import edu.ncsu.calorietracker.ui.notifications.UserDatabase;
@@ -55,15 +57,23 @@ public class CheckHealthFragment extends Fragment {
         View root = binding.getRoot();
 
         User user = mUserDb.userDao().getUser(1);
-        weight = Integer.valueOf(user.getWeight());
-        height = Integer.valueOf(user.getHeight());
-        bmi = (weight/(height*height)) * 10000;
 
-        if(bmi >= 30.0) weightStatus = "obese";
-        else if(bmi >= 25.5 && bmi <= 29.9) weightStatus = "overweight";
-        else if (bmi >= 18.5 && bmi <= 24.9) weightStatus = "healthy";
-        else weightStatus = "underweight";
+        MaterialAlertDialogBuilder dialog = new MaterialAlertDialogBuilder(getContext());
 
+        if(user.getUsername()==null || user.getWeight()==null || user.getGender()==null ||
+        user.getHeight()==null || user.getAge()==null) {
+            dialog.setMessage("Please update your profile!");
+            dialog.show();
+        }
+        else{
+            weight = Integer.valueOf(user.getWeight());
+            height = Integer.valueOf(user.getHeight());
+            bmi = (weight/(height*height)) * 10000;
+            if(bmi >= 30.0) weightStatus = "obese";
+            else if(bmi >= 25.5 && bmi <= 29.9) weightStatus = "overweight";
+            else if (bmi >= 18.5 && bmi <= 24.9) weightStatus = "healthy";
+            else weightStatus = "underweight";
+        }
         lowHealthyBMIWeight = (height*height)/(lowerHealthyBMI/10000);
         highHealthyBMIWeight = (height*height)/(higherHealthyBMI/10000);
 
