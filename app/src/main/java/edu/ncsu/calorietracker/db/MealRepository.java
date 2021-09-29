@@ -6,14 +6,17 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
+import edu.ncsu.calorietracker.db.dao.MealDao;
+import edu.ncsu.calorietracker.db.entity.Meal;
+
 public class MealRepository {
 
     private MealDao mMealDao;
     private LiveData<List<Meal>> mAllMeals;
 
-    MealRepository(Application application) {
-        MealRoomDatabase db = MealRoomDatabase.getDatabase(application);
-        mMealDao = db.MealDao();
+    public MealRepository(Application application) {
+        AppDatabase db = AppDatabase.getInstance(application);
+        mMealDao = db.mealDao();
         //mAllMeals = mMealDao.getAlphabetizedMeals();
     }
 
@@ -26,7 +29,7 @@ public class MealRepository {
     // You must call this on a non-UI thread or your app will throw an exception. Room ensures
     // that you're not doing any long running operations on the main thread, blocking the UI.
     void insert(Meal Meal) {
-        MealRoomDatabase.databaseWriteExecutor.execute(() -> {
+        AppDatabase.databaseWriteExecutor.execute(() -> {
             mMealDao.insert(Meal);
         });
     }

@@ -28,11 +28,12 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_margin="4dp"
-      android:hint="input_cal">
+      android:hint="Cal">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@android:id/text1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+      <com.google.android.material.textfield.TextInputEditText
+          android:id="@android:id/text1"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:inputType="number" />
   </com.google.android.material.textfield.TextInputLayout>
 </FrameLayout>

@@ -10,15 +10,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import edu.ncsu.calorietracker.R;
-import edu.ncsu.calorietracker.databinding.ActivityMainNavBinding;
 import edu.ncsu.calorietracker.databinding.FragmentNotificationsBinding;
-import edu.ncsu.calorietracker.db.MealRoomDatabase;
+import edu.ncsu.calorietracker.db.AppDatabase;
+import edu.ncsu.calorietracker.db.entity.User;
 import edu.ncsu.calorietracker.viewmodel.NotificationsViewModel;
 
 public class NotificationsFragment extends Fragment {
@@ -28,7 +26,7 @@ public class NotificationsFragment extends Fragment {
     //public EditUserProfileFragment e;
 
     // Database
-    private UserDatabase mUserDb;
+    private AppDatabase mUserDb;
     //String[] user_profile = new String[5];
     public NotificationsFragment() {
         // Required empty public constructor
@@ -38,7 +36,7 @@ public class NotificationsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         // Initializing database
-        mUserDb = UserDatabase.getInstance(this.getContext());
+        mUserDb = AppDatabase.getInstance(this.getContext());
         
         // This is how you insert a new user
         User defaultUser = new User("Default", "150", "Male", "180", "30");

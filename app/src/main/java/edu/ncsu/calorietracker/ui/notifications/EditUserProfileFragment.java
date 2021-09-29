@@ -1,11 +1,4 @@
 package edu.ncsu.calorietracker.ui.notifications;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.ContentValues;
-import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,16 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import edu.ncsu.calorietracker.R;
 import edu.ncsu.calorietracker.databinding.FragmentEditUserProfileBinding;
-import edu.ncsu.calorietracker.databinding.FragmentEditUserProfileBinding;
-import edu.ncsu.calorietracker.databinding.FragmentNotificationsBinding;
+import edu.ncsu.calorietracker.db.AppDatabase;
+import edu.ncsu.calorietracker.db.entity.User;
 import edu.ncsu.calorietracker.viewmodel.NotificationsViewModel;
 
 
@@ -42,8 +32,7 @@ public class EditUserProfileFragment extends Fragment {
     public String ageView;
 
 
-
-    private UserDatabase mUserDb;
+    private AppDatabase mUserDb;
 
     public EditUserProfileFragment() {
         // Required empty public constructor
@@ -52,7 +41,7 @@ public class EditUserProfileFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        mUserDb = UserDatabase.getInstance(this.getContext());
+        mUserDb = AppDatabase.getInstance(this.getContext());
         User user = new User(nameView, weightView, genderView, heightView, ageView);
         mUserDb.userDao().insertUser(user);
         user.setId(1);

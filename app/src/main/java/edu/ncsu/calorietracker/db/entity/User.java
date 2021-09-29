@@ -1,4 +1,4 @@
-package edu.ncsu.calorietracker.ui.notifications;
+package edu.ncsu.calorietracker.db.entity;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

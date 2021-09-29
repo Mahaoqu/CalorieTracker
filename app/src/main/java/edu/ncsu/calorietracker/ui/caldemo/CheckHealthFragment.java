@@ -12,13 +12,10 @@ import android.widget.TextView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import java.sql.ResultSet;
-
 import edu.ncsu.calorietracker.databinding.FragmentCheckHealthBinding;
-import edu.ncsu.calorietracker.ui.notifications.User;
-import edu.ncsu.calorietracker.ui.notifications.UserDatabase;
+import edu.ncsu.calorietracker.db.AppDatabase;
+import edu.ncsu.calorietracker.db.entity.User;
 import edu.ncsu.calorietracker.viewmodel.HomeViewModel;
-import edu.ncsu.calorietracker.viewmodel.NotificationsViewModel;
 
 
 public class CheckHealthFragment extends Fragment {
@@ -34,7 +31,7 @@ public class CheckHealthFragment extends Fragment {
     double highHealthyBMIWeight;
     String weightStatus;
 
-    private UserDatabase mUserDb;
+    private AppDatabase mUserDb;
 
     public CheckHealthFragment() {
         // Required empty public constructor
@@ -44,7 +41,7 @@ public class CheckHealthFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mUserDb = UserDatabase.getInstance(this.getContext());
+        mUserDb = AppDatabase.getInstance(this.getContext());
     }
 
     @Override

@@ -1,4 +1,4 @@
-package edu.ncsu.calorietracker.db;
+package edu.ncsu.calorietracker.db.dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -10,6 +10,8 @@ import androidx.room.Update;
 
 import java.util.List;
 
+import edu.ncsu.calorietracker.db.entity.Meal;
+
 // Primary Key of meals are their name
 // They also contain an int called calorie that tracks the calorie of the meal
 @Dao
@@ -18,16 +20,16 @@ public interface MealDao {
     // Always holds/caches latest version of data. Notifies its active observers when the
     // data has changed. Since we are getting all the contents of the database,
     // we are notified whenever any of the database contents have changed.
-    @Query("SELECT * FROM meal_table ORDER BY meal ASC")
+    @Query("SELECT * FROM meal ORDER BY mealName ASC")
     LiveData<List<Meal>> getMeals();
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Meal meal);
 
-    @Query("SELECT calorie FROM meal_table WHERE meal = :mealName")
+    @Query("SELECT calorie FROM meal WHERE mealName = :mealName")
     int getCalorie(String mealName);
 
-    @Query("DELETE FROM meal_table")
+    @Query("DELETE FROM meal")
     void deleteAll();
 
     @Update

@@ -1,19 +1,15 @@
 package edu.ncsu.calorietracker.ui.dashboard;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import edu.ncsu.calorietracker.databinding.RecyclerviewItemBinding;
-import edu.ncsu.calorietracker.db.Meal;
-import edu.ncsu.calorietracker.R;
+import edu.ncsu.calorietracker.db.entity.Meal;
 
 public class WordListAdapter extends ListAdapter<Meal, WordListAdapter.WordViewHolder> {
 
@@ -28,7 +24,7 @@ public class WordListAdapter extends ListAdapter<Meal, WordListAdapter.WordViewH
 
         public void bind(Meal meal) {
             binding.mealCal.setText(Integer.toString(meal.getCalorie()));
-            binding.mealName.setText(meal.getMeal());
+            binding.mealName.setText(meal.getMealName());
         }
 
         static WordViewHolder create(ViewGroup parent) {
@@ -63,7 +59,7 @@ public class WordListAdapter extends ListAdapter<Meal, WordListAdapter.WordViewH
 
         @Override
         public boolean areContentsTheSame(@NonNull Meal oldItem, @NonNull Meal newItem) {
-            return oldItem.getMeal().equals(newItem.getMeal());
+            return oldItem.getMealName().equals(newItem.getMealName());
         }
     }
 }
