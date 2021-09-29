@@ -1,8 +1,9 @@
-package edu.ncsu.calorietracker.ui.caldemo;
+package edu.ncsu.calorietracker.ui.home;
 
 import android.content.res.Resources;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -32,7 +33,7 @@ public class CheckHealthFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
@@ -41,7 +42,7 @@ public class CheckHealthFragment extends Fragment {
 
         homeViewModel.getBMI().observe(getViewLifecycleOwner(), res -> {
             if (res == null) {
-                MaterialAlertDialogBuilder dialog = new MaterialAlertDialogBuilder(getContext());
+                MaterialAlertDialogBuilder dialog = new MaterialAlertDialogBuilder(requireContext());
                 dialog.setMessage("Please update your profile!");
                 dialog.show();
             } else {

@@ -35,12 +35,12 @@
     </fragment>
     <fragment
         android:id="@+id/calMainFragment"
-        android:name="edu.ncsu.calorietracker.ui.caldemo.CalMainFragment"
+        android:name="edu.ncsu.calorietracker.ui.home.CalMainFragment"
         android:label="fragment_cal_main"
         tools:layout="@layout/fragment_cal_main" />
     <fragment
         android:id="@+id/checkHealthFragment"
-        android:name="edu.ncsu.calorietracker.ui.caldemo.CheckHealthFragment"
+        android:name="edu.ncsu.calorietracker.ui.home.CheckHealthFragment"
         android:label="fragment_check_health"
         tools:layout="@layout/fragment_check_health" />
     <fragment

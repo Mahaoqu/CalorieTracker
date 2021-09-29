@@ -1,4 +1,4 @@
-package edu.ncsu.calorietracker.ui.caldemo;
+package edu.ncsu.calorietracker.ui.home;
 
 import android.os.Bundle;
 
