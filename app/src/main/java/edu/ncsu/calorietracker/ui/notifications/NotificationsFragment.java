@@ -39,7 +39,7 @@ public class NotificationsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         // Initializing database
         mUserDb = UserDatabase.getInstance(this.getContext());
-
+        
         // This is how you insert a new user
         User defaultUser = new User("Default", "150", "Male", "180", "30");
         // defaultUser.setId(2);
