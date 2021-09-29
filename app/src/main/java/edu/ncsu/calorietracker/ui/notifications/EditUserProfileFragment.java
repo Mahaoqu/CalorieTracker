@@ -35,11 +35,15 @@ public class EditUserProfileFragment extends Fragment {
     private NotificationsViewModel notificationsViewModel;
     private FragmentEditUserProfileBinding binding;
 
-    String nameView;
-    String weightView;
-    String genderView;
-    String heightView;
-    String ageView;
+    public String nameView;
+    public String weightView;
+    public String genderView;
+    public String heightView;
+    public String ageView;
+
+
+
+    private UserDatabase mUserDb;
 
     public EditUserProfileFragment() {
         // Required empty public constructor
@@ -48,6 +52,11 @@ public class EditUserProfileFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        mUserDb = UserDatabase.getInstance(this.getContext());
+        User user = new User(nameView, weightView, genderView, heightView, ageView);
+        mUserDb.userDao().insertUser(user);
+        user.setId(1);
+        mUserDb.userDao().updateUser(user);
         super.onCreate(savedInstanceState);
     }
 
@@ -55,38 +64,41 @@ public class EditUserProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        //notificationsViewModel =
-        //new ViewModelProvider(this).get(NotificationsViewModel.class);
+        notificationsViewModel =
+                new ViewModelProvider(this).get(NotificationsViewModel.class);
 
         binding = FragmentEditUserProfileBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        Button edit = binding.updateProfile;
 
 
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-        Button mbt_edit = binding.updateProfile;
-        mbt_edit.setOnClickListener(
-                view -> {
-                    nameView = binding.nameEt.getText().toString();
-                    weightView = binding.weightEt.getText().toString();
-                    genderView = binding.genderEt.getText().toString();
-                    heightView = binding.heightEt.getText().toString();
-                    ageView = binding.ageEt.getText().toString();
+                nameView = binding.nameEt.getText().toString();
+                weightView = binding.weightEt.getText().toString();
+                genderView = binding.genderEt.getText().toString();
+                heightView = binding.heightEt.getText().toString();
+                ageView = binding.ageEt.getText().toString();
 
-
-                    //TODO: save user data to database
-
-
-                    MaterialAlertDialogBuilder dialog = new MaterialAlertDialogBuilder(getContext());
-                    if (nameView.equals("") || weightView.equals("") || genderView.equals("") || heightView.equals("") || ageView.equals("")) {
-                        dialog.setMessage("not complete");
-                        dialog.show();
-                    } else {
-                        Navigation.findNavController(view).navigate(R.id.navigation_notifications);
-                    }
-
-
+                MaterialAlertDialogBuilder dialog = new MaterialAlertDialogBuilder(getContext());
+                if (nameView.equals("") || weightView.equals("") || genderView.equals("") || heightView.equals("") || ageView.equals("")) {
+                    dialog.setMessage("not complete");
+                    dialog.show();
+                } else {
+                    User user = mUserDb.userDao().getUser(1);
+                    user.setAge(ageView);
+                    user.setHeight(heightView);
+                    user.setWeight(weightView);
+                    user.setGender(genderView);
+                    user.setUsername(nameView);
+                    user.setId(1);
+                    mUserDb.userDao().updateUser(user);
+                    Navigation.findNavController(view).navigate(R.id.navigation_notifications);
                 }
-        );
+            }
+        });
 
         return root;
     }
