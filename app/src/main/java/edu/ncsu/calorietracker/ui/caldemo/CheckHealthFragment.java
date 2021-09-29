@@ -3,25 +3,36 @@ package edu.ncsu.calorietracker.ui.caldemo;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import edu.ncsu.calorietracker.databinding.FragmentCheckHealthBinding;
+import edu.ncsu.calorietracker.ui.notifications.User;
+import edu.ncsu.calorietracker.ui.notifications.UserDatabase;
+import edu.ncsu.calorietracker.viewmodel.HomeViewModel;
+import edu.ncsu.calorietracker.viewmodel.NotificationsViewModel;
 
 
 public class CheckHealthFragment extends Fragment {
+    private HomeViewModel homeViewModel;
     FragmentCheckHealthBinding binding;
 
-    int user_weight;
-    int user_calories;
-    String user_gender;
-    int user_age;
-    int user_height;
-    double standardCalories;
+    double weight;
+    double height;
+    double bmi;
+    double lowerHealthyBMI = 18.5;
+    double higherHealthyBMI = 24.9;
+    double lowHealthyBMIWeight;
+    double highHealthyBMIWeight;
+    String weightStatus;
+
+    private UserDatabase mUserDb;
 
     public CheckHealthFragment() {
         // Required empty public constructor
@@ -31,61 +42,47 @@ public class CheckHealthFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mUserDb = UserDatabase.getInstance(this.getContext());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        homeViewModel =
+                new ViewModelProvider(this).get(HomeViewModel.class);
 
         binding = FragmentCheckHealthBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        binding.submitButton.setOnClickListener(
-                view -> {
-                    try {
-                        user_calories = Integer.valueOf(binding.caloriesInput.getText().toString());
-                        user_weight = Integer.valueOf(binding.weightInput.getText().toString());
-                        user_gender = binding.genderInput.getText().toString();
-                        user_height = Integer.valueOf(binding.heightInput.getText().toString());
-                        user_age = Integer.valueOf(binding.ageInput.getText().toString());
-                        standardCalories = getStandardCalories(user_weight, user_gender, user_height, user_age);
-                    } catch (IllegalArgumentException e) {
-                        System.out.println("Null Input");
-                        MaterialAlertDialogBuilder dialog = new MaterialAlertDialogBuilder(getContext());
-                        dialog.setMessage("Invalid Input");
-                    }
 
-                    //TODO
-                    /**
-                     * to calculate if the user is healthy
-                     * The formula is:
-                     * Adult male: 66 + (6.3 x body weight in lbs.) + (12.9 x height in inches) - (6.8 x age in years) = BMR
-                     * Adult female: 655 + (4.3 x weight in lbs.) + (4.7 x height in inches) - (4.7 x age in years) = BMR
-                     */
-                    MaterialAlertDialogBuilder dialog = new MaterialAlertDialogBuilder(getContext());
-                    if (standardCalories <= 0 || user_calories == standardCalories) {
-                        dialog.setMessage("Invalid Input");
-                    } else if (user_calories < standardCalories) {
-                        dialog.setMessage("Congratulations! You are very healthy!");
-                    } else if (user_calories > standardCalories) {
-                        dialog.setMessage("Unfortunately, It seems like you've had too many calories today!");
-                    } else {
-                        dialog.setMessage("Error");
-                    }
-                    dialog.show();
-                });
+        User user = mUserDb.userDao().getUser(1);
+        weight = Integer.valueOf(user.getWeight());
+        height = Integer.valueOf(user.getHeight());
+        bmi = (weight/(height*height)) * 10000;
+
+        if(bmi >= 30.0) weightStatus = "obese";
+        else if(bmi >= 25.5 && bmi <= 29.9) weightStatus = "overweight";
+        else if (bmi >= 18.5 && bmi <= 24.9) weightStatus = "healthy";
+        else weightStatus = "underweight";
+
+        lowHealthyBMIWeight = (height*height)/(lowerHealthyBMI/10000);
+        highHealthyBMIWeight = (height*height)/(higherHealthyBMI/10000);
+
+        final TextView bmiView = binding.userBMI;
+        final TextView healthView = binding.health;
+        final TextView averageView = binding.averageWeight;
+
+
+        homeViewModel.setBMI(String.valueOf(bmi));
+        homeViewModel.setHealth(weightStatus);
+
+        homeViewModel.getBMI().observe(getViewLifecycleOwner(), bmiView::setText);
+        homeViewModel.getHealth().observe(getViewLifecycleOwner(), healthView::setText);
+
+        // Must send lower-bound first and higher-bound second
+        homeViewModel.setAverageText(String.valueOf(lowerHealthyBMI), String.valueOf(higherHealthyBMI));
+        homeViewModel.getAverageText().observe(getViewLifecycleOwner(), averageView::setText);
 
         return root;
-    }
-
-    private double getStandardCalories(int weight, String gender, int height, int age) {
-
-        if (gender.equals("male") || gender.equals("Male") || gender.equals("MALE")) {
-            return 66 + (6.3 * weight) + (12.9 * height) - (6.8 * age);
-        } else if (gender.equals("female") || gender.equals("Female") || gender.equals("FEMALE")) {
-            return 655 + (4.3 * weight) + (4.7 * height) - (4.7 * age);
-        } else {
-            return -1;
-        }
     }
 
 }

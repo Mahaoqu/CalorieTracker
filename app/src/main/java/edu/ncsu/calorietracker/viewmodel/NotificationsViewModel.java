@@ -8,42 +8,36 @@ public class NotificationsViewModel extends ViewModel {
 
     private MutableLiveData<String> name;
     private MutableLiveData<String> weight;
-    private MutableLiveData<String> weightText;
     private MutableLiveData<String> gender;
     private MutableLiveData<String> height;
-    private MutableLiveData<String> heightText;
     private MutableLiveData<String> age;
-    private MutableLiveData<String> ageText;
 
     public NotificationsViewModel() {
         name = new MutableLiveData<>();
         weight = new MutableLiveData<>();
-        weightText = new MutableLiveData<>();
         gender = new MutableLiveData<>();
         height = new MutableLiveData<>();
-        heightText = new MutableLiveData<>();
         age = new MutableLiveData<>();
-        ageText = new MutableLiveData<>();
     }
 
     public LiveData<String> getName() {return name;}
     public void setName(String text) {name.setValue("Name: " + text);}
 
-    public LiveData<String> getWeight() {return weightText;}
+    public LiveData<String> getWeight() {return weight;}
     public void setWeight(String weightIn) {
-        weightText.setValue("Weight: " + weightIn);
+        weight.setValue("Weight: " + weightIn + "kg");
     }
 
     public LiveData<String> getGender() {return gender;}
     public void setGender(String text) {gender.setValue("Gender: " + text);}
 
-    public LiveData<String> getHeight() {return heightText;}
+    public LiveData<String> getHeight() {return height;}
     public void setHeight(String heightIn) {
-        heightText.setValue("Height: " + heightIn);
+        height.setValue("Height: " + heightIn + "cm");
     }
 
-    public LiveData<String> getAge() {return ageText;}
+    public LiveData<String> getAge() {return age;}
     public void setAge(String ageIn) {
-        ageText.setValue("Age: " + ageIn);
+        age.setValue("Age: " + ageIn);
     }
 }

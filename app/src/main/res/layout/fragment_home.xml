@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
 
-        android:text="Check you are healthy or unhealthy today--->"
+        android:text="BMI--->"
         android:textSize="30dp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp">
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
 
         android:layout_marginTop="32dp"
-        android:text="Calculate your calories--->"
+        android:text="Total Calories Consumed--->"
         android:textSize="30dp"
         app:layout_constraintTop_toBottomOf="@+id/bt_checkhealth"
         tools:layout_editor_absoluteX="0dp">
