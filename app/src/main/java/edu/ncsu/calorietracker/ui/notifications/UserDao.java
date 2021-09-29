@@ -13,6 +13,12 @@ public interface UserDao {
     @Query("SELECT * from User WHERE id = :id")
     public User getUser(int id);
 
+    @Query("SELECT id from User WHERE username = :username")
+    public int getUser(String username);
+
+    @Query("SELECT COUNT(username) from User")
+    public int userCount();
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     public long insertUser(User user);
 

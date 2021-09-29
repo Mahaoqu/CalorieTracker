@@ -25,11 +25,11 @@ public class NotificationsFragment extends Fragment {
 
     private NotificationsViewModel notificationsViewModel;
     private FragmentNotificationsBinding binding;
-    public EditUserProfileFragment e;
+    //public EditUserProfileFragment e;
 
     // Database
     private UserDatabase mUserDb;
-    String[] user_profile = new String[5];
+    //String[] user_profile = new String[5];
     public NotificationsFragment() {
         // Required empty public constructor
     }
@@ -38,18 +38,28 @@ public class NotificationsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         // Initializing database
-        // Check for no user in database, create default
         mUserDb = UserDatabase.getInstance(this.getContext());
 
-        /*
-        // This is how to create a user
-         User user = new User("Default", "150", "Male", "180", "30");
-         mUserDb.userDao().insertUser(user);
+        // This is how you insert a new user
+        User defaultUser = new User("Default", "150", "Male", "180", "30");
+        // defaultUser.setId(2);
+        // mUserDb.userDao().insertUser(defaultUser);
+
+        // Checks if there is already user data
+        // If not, insert a default user data
+        User user = mUserDb.userDao().getUser(1);
+        if(user == null) {
+            defaultUser.setId(1);
+            mUserDb.userDao().insertUser(defaultUser);
+        }
+
         //e = (EditUserProfileFragment)getActivity().getSupportFragmentManager().findFragmentByTag("p");
-         // This is how to update a user. Make sure to set the user's id to 1 to update the correct user and not insert a new one
-         user.setWeight("149");
-         user.setId(1);
-         mUserDb.userDao().updateUser(user);*/
+
+        // This is how to update a user. There will always be a user in the database with id of 1
+        // User user2;
+        // user2 = new User("User100", "500", "Male", "200", "20");
+        // user2.setId(1);
+        // mUserDb.userDao().updateUser(user2);
 
         super.onCreate(savedInstanceState);
     }
