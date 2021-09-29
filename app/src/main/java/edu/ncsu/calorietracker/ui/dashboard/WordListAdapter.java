@@ -8,6 +8,11 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+
 import edu.ncsu.calorietracker.databinding.RecyclerviewItemBinding;
 import edu.ncsu.calorietracker.db.entity.Meal;
 
@@ -25,6 +30,9 @@ public class WordListAdapter extends ListAdapter<Meal, WordListAdapter.WordViewH
         public void bind(Meal meal) {
             binding.mealCal.setText(Integer.toString(meal.getCalorie()));
             binding.mealName.setText(meal.getMealName());
+            binding.mealTime.setText(LocalDateTime.ofInstant(
+                    meal.getSubmitTime().toInstant(), ZoneId.systemDefault())
+                    .format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT)));
         }
 
         static WordViewHolder create(ViewGroup parent) {

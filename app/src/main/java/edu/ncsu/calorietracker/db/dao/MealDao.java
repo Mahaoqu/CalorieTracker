@@ -20,7 +20,7 @@ public interface MealDao {
     // Always holds/caches latest version of data. Notifies its active observers when the
     // data has changed. Since we are getting all the contents of the database,
     // we are notified whenever any of the database contents have changed.
-    @Query("SELECT * FROM meal ORDER BY mealName ASC")
+    @Query("SELECT * FROM meal ORDER BY id DESC")
     LiveData<List<Meal>> getMeals();
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

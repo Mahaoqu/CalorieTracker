@@ -13,7 +13,7 @@ import edu.ncsu.calorietracker.repository.UserRepository;
 
 public class ProfileViewModel extends AndroidViewModel {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
     private MutableLiveData<User> user;
 
     public ProfileViewModel(Application application) {
@@ -22,29 +22,7 @@ public class ProfileViewModel extends AndroidViewModel {
     }
 
     public LiveData<User> getInitUser() {
-        // User defaultUser = new User("Default", "150", "Male", "180", "30");
-
-        // This is how you insert a new user
-
-        // defaultUser.setId(2);
-        // mUserDb.userDao().insertUser(defaultUser);
-
-        // Checks if there is already user data
-        // If not, insert a default user data
-//        User user = mUserDb.userDao().getUser(1);
-//        if(user == null) {
-//            defaultUser.setId(1);
-//            mUserDb.userDao().insertUser(defaultUser);
-//        }
-
-        return Transformations.map(userRepository.getUserById(1),
-                user -> {
-                    if (user == null) {
-                        return new User("Default", "150", "Male", "180", "30");
-                    }
-                    return user;
-                }
-        );
+        return userRepository.getUserById(1);
     }
 
     public void setUser(User user) {

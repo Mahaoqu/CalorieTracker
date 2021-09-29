@@ -1,5 +1,6 @@
 package edu.ncsu.calorietracker.ui.caldemo;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,36 +13,22 @@ import android.widget.TextView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import edu.ncsu.calorietracker.R;
 import edu.ncsu.calorietracker.databinding.FragmentCheckHealthBinding;
 import edu.ncsu.calorietracker.db.AppDatabase;
 import edu.ncsu.calorietracker.db.entity.User;
 import edu.ncsu.calorietracker.viewmodel.HomeViewModel;
+import edu.ncsu.calorietracker.viewmodel.ProfileViewModel;
 
 
 public class CheckHealthFragment extends Fragment {
     private HomeViewModel homeViewModel;
+
     FragmentCheckHealthBinding binding;
-
-    double weight;
-    double height;
-    double bmi;
-    double lowerHealthyBMI = 18.5;
-    double higherHealthyBMI = 24.9;
-    double lowHealthyBMIWeight;
-    double highHealthyBMIWeight;
-    String weightStatus;
-
-    private AppDatabase mUserDb;
-
-    public CheckHealthFragment() {
-        // Required empty public constructor
-    }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mUserDb = AppDatabase.getInstance(this.getContext());
     }
 
     @Override
@@ -49,47 +36,29 @@ public class CheckHealthFragment extends Fragment {
                              Bundle savedInstanceState) {
         homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
-
         binding = FragmentCheckHealthBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        User user = mUserDb.userDao().getUser(1);
-
-        MaterialAlertDialogBuilder dialog = new MaterialAlertDialogBuilder(getContext());
-
-        if(user.getUsername()==null || user.getWeight()==null || user.getGender()==null ||
-        user.getHeight()==null || user.getAge()==null) {
-            dialog.setMessage("Please update your profile!");
-            dialog.show();
-        }
-        else{
-            weight = Integer.valueOf(user.getWeight());
-            height = Integer.valueOf(user.getHeight());
-            bmi = (weight/(height*height)) * 10000;
-            if(bmi >= 30.0) weightStatus = "obese";
-            else if(bmi >= 25.5 && bmi <= 29.9) weightStatus = "overweight";
-            else if (bmi >= 18.5 && bmi <= 24.9) weightStatus = "healthy";
-            else weightStatus = "underweight";
-        }
-        lowHealthyBMIWeight = (height*height)/(lowerHealthyBMI/10000);
-        highHealthyBMIWeight = (height*height)/(higherHealthyBMI/10000);
-
-        final TextView bmiView = binding.userBMI;
-        final TextView healthView = binding.health;
-        final TextView averageView = binding.averageWeight;
-
-
-        homeViewModel.setBMI(String.valueOf(bmi));
-        homeViewModel.setHealth(weightStatus);
-
-        homeViewModel.getBMI().observe(getViewLifecycleOwner(), bmiView::setText);
-        homeViewModel.getHealth().observe(getViewLifecycleOwner(), healthView::setText);
-
-        // Must send lower-bound first and higher-bound second
-        homeViewModel.setAverageText(String.valueOf(lowerHealthyBMI), String.valueOf(higherHealthyBMI));
-        homeViewModel.getAverageText().observe(getViewLifecycleOwner(), averageView::setText);
+        homeViewModel.getBMI().observe(getViewLifecycleOwner(), res -> {
+            if (res == null) {
+                MaterialAlertDialogBuilder dialog = new MaterialAlertDialogBuilder(getContext());
+                dialog.setMessage("Please update your profile!");
+                dialog.show();
+            } else {
+                Resources r = getResources();
+                binding.userBMI.setText(String.format(r.getString(R.string.bmi_fmt), res.bmi));
+                binding.health.setText(String.format(r.getString(R.string.bmi_status), getWeightStatus(res.bmi)));
+                binding.weightBetween.setText(String.format(r.getString(R.string.weigh_between_text), res.lowerHealthBMI, res.higherHealthBMI));
+            }
+        });
 
         return root;
     }
 
+    private String getWeightStatus(int bmi) {
+        if (bmi >= 30.0) return "obese";
+        else if (bmi >= 25.5 && bmi <= 29.9) return "overweight";
+        else if (bmi >= 18.5 && bmi <= 24.9) return "healthy";
+        else return "underweight";
+    }
 }

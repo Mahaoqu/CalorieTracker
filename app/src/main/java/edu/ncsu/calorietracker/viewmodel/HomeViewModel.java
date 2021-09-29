@@ -1,41 +1,57 @@
 package edu.ncsu.calorietracker.viewmodel;
 
+import android.app.Application;
+
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+import edu.ncsu.calorietracker.repository.UserRepository;
 
-    private MutableLiveData<String> bmi;
-    private MutableLiveData<String> health;
-    private MutableLiveData<String> average;
+public class HomeViewModel extends AndroidViewModel {
 
+    private final UserRepository userRepository;
 
-    public HomeViewModel() {
-        bmi = new MutableLiveData<>();
-        health = new MutableLiveData<>();
-        average = new MutableLiveData<>();
+    private MutableLiveData<Integer> bmi;
+    double weight;
+    double height;
+//    double bmi;
+
+    final double lowerHealthyBMI = 18.5;
+    final double higherHealthyBMI = 24.9;
+
+    public HomeViewModel(Application application) {
+        super(application);
+        userRepository = new UserRepository(application);
     }
 
-    public LiveData<String> getBMI() {
-        return bmi;
+    public LiveData<BMIResult> getBMI() {
+        return Transformations.map(
+                userRepository.getUserById(1), user -> {
+                    if (user == null) return null;
+                    else
+                        return calculateBMI(Integer.parseInt(user.getHeight()), Integer.parseInt(user.getWeight()));
+                });
     }
 
-    public void setBMI(String text) {
-        bmi.setValue("BMI: " + text);
+    public BMIResult calculateBMI(double height, double weight) {
+        double bmi = (weight / (height * height)) * 10000;
+        double lowHealthyBMIWeight = (height * height) / (lowerHealthyBMI / 10000);
+        double highHealthyBMIWeight = (height * height) / (higherHealthyBMI / 10000);
+        return new BMIResult((int) bmi, (int) lowHealthyBMIWeight, (int) highHealthyBMIWeight);
     }
 
-    public LiveData<String> getHealth() {
-        return health;
-    }
+    public static class BMIResult {
+        public int bmi;
+        public int lowerHealthBMI;
+        public int higherHealthBMI;
 
-    public void setHealth(String text) {
-        health.setValue("Your BMI Weight Status is " + text);
-    }
-
-    public LiveData<String> getAverageText() {return average;}
-
-    public void setAverageText(String lowerAverage, String highAverage) {
-        average.setValue("Your healthy weight should be between " + lowerAverage  + " and " + highAverage);
+        public BMIResult(int bmi, int lowerHealthBMI, int higherHealthBMI) {
+            this.bmi = bmi;
+            this.lowerHealthBMI = lowerHealthBMI;
+            this.higherHealthBMI = higherHealthBMI;
+        }
     }
 }

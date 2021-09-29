@@ -17,4 +17,7 @@
     <string name="button_save">Save</string>
     <string name="empty_not_saved">Word not saved because it is empty.</string>
     <string name="add_word">Add word</string>
+    <string name="bmi_status">Your BMI Weight Status is %s</string>
+    <string name="bmi_fmt">BMI: %d</string>
+    <string name="weigh_between_text">Your healthy weight should be between %d and %d.</string>
 </resources>

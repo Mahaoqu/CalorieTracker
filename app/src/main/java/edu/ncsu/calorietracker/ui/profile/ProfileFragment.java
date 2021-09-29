@@ -17,23 +17,13 @@ import edu.ncsu.calorietracker.viewmodel.ProfileViewModel;
 public class ProfileFragment extends Fragment {
 
     private ProfileViewModel profileViewModel;
-
     private FragmentProfileBinding binding;
-    //public EditUserProfileFragment e;
-
-
-    //String[] user_profile = new String[5];
-    public ProfileFragment() {
-        // Required empty public constructor
-    }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
         super.onCreate(savedInstanceState);
     }
-
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -42,11 +32,21 @@ public class ProfileFragment extends Fragment {
         View root = binding.getRoot();
 
         profileViewModel.getInitUser().observe(getViewLifecycleOwner(), user -> {
-            binding.nameTextView.setText(user.getUsername());
-            binding.weightTextView.setText(user.getWeight());
-            binding.genderTextView.setText(user.getGender());
-            binding.heightTextView.setText(user.getHeight());
-            binding.ageTextView.setText(user.getAge());
+            if (user == null) {
+                binding.noUserTips.setVisibility(View.VISIBLE);
+                binding.nameTextView.setText("");
+                binding.weightTextView.setText("");
+                binding.genderTextView.setText("");
+                binding.heightTextView.setText("");
+                binding.ageTextView.setText("");
+            } else {
+                binding.noUserTips.setVisibility(View.INVISIBLE);
+                binding.nameTextView.setText(user.getUsername());
+                binding.weightTextView.setText(user.getWeight());
+                binding.genderTextView.setText(user.getGender());
+                binding.heightTextView.setText(user.getHeight());
+                binding.ageTextView.setText(user.getAge());
+            }
         });
 
         binding.btEditProfile.setOnClickListener(

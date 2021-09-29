@@ -22,6 +22,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import java.util.ArrayList;
 
 import edu.ncsu.calorietracker.databinding.FragmentDashboardBinding;
+import edu.ncsu.calorietracker.databinding.InputCalBinding;
 import edu.ncsu.calorietracker.db.entity.Meal;
 import edu.ncsu.calorietracker.viewmodel.DashboardViewModel;
 
@@ -48,6 +49,7 @@ public class DashboardFragment extends Fragment {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     TextView input = ((AlertDialog) dialog).findViewById(android.R.id.text1);
+                                    dashboardViewModel.addMeal(Integer.parseInt(input.getText().toString()));
                                     Toast.makeText(getContext(), input.getText(), Toast.LENGTH_LONG).show();
                                 }
                             })
@@ -59,11 +61,14 @@ public class DashboardFragment extends Fragment {
         final WordListAdapter adapter = new WordListAdapter(new WordListAdapter.WordDiff());
         binding.list.setAdapter(adapter);
         binding.list.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter.submitList(new ArrayList<Meal>(){{
-            add(new Meal("breakfast", 200));
-            add(new Meal("lunch", 800));
-            add(new Meal("dinner", 500));
-        }});
+
+        dashboardViewModel.getMeals().observe(getViewLifecycleOwner(), adapter::submitList);
+
+//        adapter.submitList(new ArrayList<Meal>(){{
+//            add(new Meal("breakfast", 200));
+//            add(new Meal("lunch", 800));
+//            add(new Meal("dinner", 500));
+//        }});
 
 //        final TextView textView = binding.textDashboard;
 //        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
