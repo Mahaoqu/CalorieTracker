@@ -1,4 +1,4 @@
-package edu.ncsu.calorietracker.ui.notifications;
+package edu.ncsu.calorietracker.ui.profile;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;

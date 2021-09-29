@@ -1,4 +1,4 @@
-package edu.ncsu.calorietracker.ui.notifications;
+package edu.ncsu.calorietracker.ui.profile;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,27 +8,27 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import edu.ncsu.calorietracker.R;
-import edu.ncsu.calorietracker.databinding.FragmentNotificationsBinding;
+import edu.ncsu.calorietracker.databinding.FragmentProfileBinding;
 import edu.ncsu.calorietracker.db.AppDatabase;
 import edu.ncsu.calorietracker.db.entity.User;
 import edu.ncsu.calorietracker.viewmodel.NotificationsViewModel;
 
-public class NotificationsFragment extends Fragment {
+public class ProfileFragment extends Fragment {
 
     private NotificationsViewModel notificationsViewModel;
-    private FragmentNotificationsBinding binding;
+    private FragmentProfileBinding binding;
     //public EditUserProfileFragment e;
 
     // Database
     private AppDatabase mUserDb;
+
     //String[] user_profile = new String[5];
-    public NotificationsFragment() {
+    public ProfileFragment() {
         // Required empty public constructor
     }
 
@@ -61,7 +61,7 @@ public class NotificationsFragment extends Fragment {
         notificationsViewModel =
                 new ViewModelProvider(this).get(NotificationsViewModel.class);
 
-        binding = FragmentNotificationsBinding.inflate(inflater, container, false);
+        binding = FragmentProfileBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         Button edit = binding.btEditProfile;
 

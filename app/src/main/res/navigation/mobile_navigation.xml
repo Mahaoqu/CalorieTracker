@@ -26,9 +26,9 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="edu.ncsu.calorietracker.ui.notifications.NotificationsFragment"
+        android:name="edu.ncsu.calorietracker.ui.profile.ProfileFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" >
+        tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_navigation_notifications_to_editUserProfileFragment"
             app:destination="@id/editUserProfileFragment" />
@@ -45,7 +45,7 @@
         tools:layout="@layout/fragment_check_health" />
     <fragment
         android:id="@+id/editUserProfileFragment"
-        android:name="edu.ncsu.calorietracker.ui.notifications.EditUserProfileFragment"
+        android:name="edu.ncsu.calorietracker.ui.profile.EditUserProfileFragment"
         android:label="fragment_edit_user_profile"
         tools:layout="@layout/fragment_edit_user_profile" >
         <action
