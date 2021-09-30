@@ -1,5 +1,8 @@
 # CalorieTracker
-csc510-21fall-g35
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5542218.svg)](https://doi.org/10.5281/zenodo.5542218)
+
+
 
 Functions：
 1. Inserting records
