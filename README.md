@@ -6,7 +6,7 @@
 <br />
 <p align="center">
   <a href="https://leetcode.com">
-    <img src="images/icon.png">
+    <img src="images/icon.png" alt="Logo" width="200" height="200">
   </a>
 
   <h3 align="center">CalorieTracker</h3>
@@ -64,17 +64,9 @@
   </a>
 </p>
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`Mahaoqu`, `CalorieTracker`, `twitter_handle`, `email`, `project_title`, `project_description`
-
-
 ### Built With
 
-* []()
-* []()
-* []()
-
+* [Android Studio](https://developer.android.com/studio)
 
 
 <!-- GETTING STARTED -->
@@ -84,23 +76,20 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+You can choose to run CalorieTracker on the Android Emulator or a real android device.
+
 
 ### Installation
-
-1. Clone the repo
+* From Git
+   1. Clone the repo
    ```sh
    git clone https://github.com/Mahaoqu/CalorieTracker.git
    ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
+   2. Open the local repo with Android Studio
+   3. Find 'Run' menu and click 'Run app'
 
+* From apk file
+   Download the apk file _[here](https://drive.google.com/file/d/1g4xrbyIkdJ4E1qNQDTp-v_9q2e-l_X1F/view?usp=sharing)_
 
 
 <!-- USAGE EXAMPLES -->
@@ -141,8 +130,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- CONTACT -->
 ## Contact
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
 
 Project Link: [https://github.com/Mahaoqu/CalorieTracker](https://github.com/Mahaoqu/CalorieTracker)
 
