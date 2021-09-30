@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import java.util.Locale;
+
 import edu.ncsu.calorietracker.R;
 import edu.ncsu.calorietracker.databinding.FragmentProfileBinding;
 import edu.ncsu.calorietracker.viewmodel.ProfileViewModel;
@@ -41,11 +43,11 @@ public class ProfileFragment extends Fragment {
                 binding.ageTextView.setText("");
             } else {
                 binding.noUserTips.setVisibility(View.INVISIBLE);
-                binding.nameTextView.setText(user.getUsername());
-                binding.weightTextView.setText(user.getWeight());
-                binding.genderTextView.setText(user.getGender());
-                binding.heightTextView.setText(user.getHeight());
-                binding.ageTextView.setText(user.getAge());
+                binding.nameTextView.setText("UserName:         " + user.getUsername().toUpperCase(Locale.ROOT));
+                binding.weightTextView.setText("Weight:     " + user.getWeight() + " kg");
+                binding.genderTextView.setText("Gender:     " + user.getGender());
+                binding.heightTextView.setText("Height:     " + user.getHeight() + " cm");
+                binding.ageTextView.setText("Age:   " + user.getAge());
             }
         });
 
