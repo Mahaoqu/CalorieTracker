@@ -2,12 +2,12 @@
 
 | Notes|Self Assessment  zero (none), one (a litte), two (somewhat), three (a lot)| Evidence|
 |-----|--------|---------|
-|workload is spread over the whole team (one team member is often Xtimes more productive than the others...but nevertheless, here is a track record that everyone is contributing a lot)|3|Evidence in GH  (https://github.com/BosamiyaSimran/SE-Project-Group-15/commits/main)|
-| Number of commits|3|In GH (https://github.com/BosamiyaSimran/SE-Project-Group-15/commits/main)|
+|workload is spread over the whole team (one team member is often Xtimes moreproductive than the others...but nevertheless, here is a track record that everyone is contributing a lot)|3|Evidence in GH  (https://github.com/Mahaoqu/CalorieTracker/commits/master)|
+| Number of commits|3|In GH (https://github.com/Mahaoqu/CalorieTracker/commits/master)|
 | Number of commits: by different people|3|in GH|
-| Issues reports: there are **many**| 3|In GH (https://github.com/BosamiyaSimran/SE-Project-Group-15/commits/main) |
-|  issues are being  closed|3 |Evidence in GH (https://github.com/BosamiyaSimran/SE-Project-Group-15/issues)|
-| DOI badge: exists |3 |In GH (https://github.com/BosamiyaSimran/SE-Project-Group-15/blob/main/README.md)|
+| Issues reports: there are **many**| 3|In GH (https://github.com/Mahaoqu/CalorieTracker/issues) |
+|  issues are being  closed|3 |Evidence in GH (https://github.com/Mahaoqu/CalorieTracker/issues)|
+| DOI badge: exists |3 |In GH (https://github.com/Mahaoqu/CalorieTracker/blob/master/README.md)|
 |Docs: doco generated , format not ugly |2|in GH|
 |Docs: what: point descriptions of each class/function (in isolation) |2| |
 |Docs: how: for common use cases X,Y,Z mini-tutorials showing worked examples on how to do X,Y,Z|2|doc page entries|
