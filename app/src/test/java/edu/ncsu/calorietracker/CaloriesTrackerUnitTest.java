@@ -24,7 +24,7 @@ public class CaloriesTrackerUnitTest extends EditUserProfileFragment {
 
     ProfileViewModel profileViewModel;
     ProfileFragment binding;
-    
+
     @Test
     public void userCheck() throws Exception{
 
