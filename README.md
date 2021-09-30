@@ -5,7 +5,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/Mahaoqu/CalorieTracker">
+  <a href="https://leetcode.com">
     <img src="images/icon.png">
   </a>
 
@@ -58,7 +58,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://drive.google.com/file/d/1g4xrbyIkdJ4E1qNQDTp-v_9q2e-l_X1F/view?usp=sharing)
+<p align="center">
+  <a href="https://drive.google.com/file/d/1g4xrbyIkdJ4E1qNQDTp-v_9q2e-l_X1F/view?usp=sharing">
+    <img src="images/assemble.png">
+  </a>
+</p>
 
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
@@ -169,4 +173,3 @@ Project Link: [https://github.com/Mahaoqu/CalorieTracker](https://github.com/Mah
 [license-url]: https://github.com/Mahaoqu/CalorieTracker/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/Mahaoqu
-[product-screenshot]: images/screenshot.png
