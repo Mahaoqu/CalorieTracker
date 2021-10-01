@@ -72,7 +72,7 @@
   </a>
 </p>
 
-This
+This app is designed for recording daily calorie intake, it will help people living a healthier life:sweat_smile:
 
 
 ### Built With
@@ -98,7 +98,7 @@ Android Emulator embedded in Android Studio or a real android device.
    git clone https://github.com/Mahaoqu/CalorieTracker.git
    ```
 2. Open the local repo with Android Studio
-3. Find 'Run' menu and then 'Run app'
+3. Find 'Run' menu and then click 'Run app'
 
 * From apk file:
 
@@ -110,16 +110,25 @@ Android Emulator embedded in Android Studio or a real android device.
 
 This app has three basic functions now, more features are on the way!
 
-1. BMI caculating:
+* BMI caculating:
 
-    Users can acquire their BMI
+    App could caculate user's BMI from the profile data
 
-    <img src="images/BMI.png" width="144" height="256"  align="center" alt="image">
+    <img src="images/BMI.png" width="288" height="512"  align="center" alt="image">
 
 
-2. Add new meal:
+* Add new meal:
 
-3. Edit your profile:
+    Users could input meal record by clicking "+ New Meal" button
+
+    <img src="images/new_meal.png" width="288" height="512"  align="center" alt="image">
+
+* Edit your profile:
+
+    Users could edit their profile by clicking "Editing Your Profile"
+
+    <img src="images/edit_profile.png" width="288" height="512"  align="center" alt="image">
+
 
 
 
