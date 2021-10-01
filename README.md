@@ -65,9 +65,12 @@
 
 <p align="center">
   <a href="https://drive.google.com/file/d/1g4xrbyIkdJ4E1qNQDTp-v_9q2e-l_X1F/view?usp=sharing">
-    <img src="images/assemble.png">
+    <img src="images/home.png">
   </a>
 </p>
+
+This
+
 
 ### Built With
 
@@ -77,32 +80,43 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple steps.
+You can choose to run CalorieTracker on the Android Emulator either on a real android device.
 
 ### Prerequisites
 
-You can choose to run CalorieTracker on the Android Emulator or a real android device.
+Android Emulator embedded in Android Studio or a real android device.
 
 
 ### Installation
-* From Git
-   1. Clone the repo
+* From Git:
+
+1. Clone the repo
    ```sh
    git clone https://github.com/Mahaoqu/CalorieTracker.git
    ```
-   2. Open the local repo with Android Studio
-   3. Find 'Run' menu and click 'Run app'
+2. Open the local repo with Android Studio
+3. Find 'Run' menu and then 'Run app'
 
-* From apk file
-   Download the apk file _[here](https://drive.google.com/file/d/1g4xrbyIkdJ4E1qNQDTp-v_9q2e-l_X1F/view?usp=sharing)_
+* From apk file:
+
+   Download the apk file _[here](https://drive.google.com/file/d/1g4xrbyIkdJ4E1qNQDTp-v_9q2e-l_X1F/view?usp=sharing)_ and install it on your android device
 
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+This app has three basic functions now, more features are on the way!
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+1. BMI caculating:
+
+    Users can acquire their BMI
+
+    <img src="images/BMI.png" width="144" height="256"  align="center" alt="image">
+
+
+2. Add new meal:
+
+3. Edit your profile:
 
 
 
@@ -143,11 +157,17 @@ Project Link: [https://github.com/Mahaoqu/CalorieTracker](https://github.com/Mah
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* []()
-* []()
-* []()
-
-
+* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
+* [Img Shields](https://shields.io)
+* [Choose an Open Source License](https://choosealicense.com)
+* [GitHub Pages](https://pages.github.com)
+* [Animate.css](https://daneden.github.io/animate.css)
+* [Loaders.css](https://connoratherton.com/loaders)
+* [Slick Carousel](https://kenwheeler.github.io/slick)
+* [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll)
+* [Sticky Kit](http://leafo.net/sticky-kit)
+* [JVectorMap](http://jvectormap.com)
+* [Font Awesome](https://fontawesome.com)
 
 
 
