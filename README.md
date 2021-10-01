@@ -1,5 +1,6 @@
 # CalorieTracker
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1bfc7474a595421695a431cb9f3c9000)](https://app.codacy.com/gh/Mahaoqu/CalorieTracker?utm_source=github.com&utm_medium=referral&utm_content=Mahaoqu/CalorieTracker&utm_campaign=Badge_Grade_Settings)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5542218.svg)](https://doi.org/10.5281/zenodo.5542218)
 [![API](https://img.shields.io/badge/API-29%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=29)
 ![Workflow](https://github.com/Mahaoqu/CalorieTracker/actions/workflows/android.yml/badge.svg)
