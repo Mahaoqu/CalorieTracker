@@ -1,11 +1,14 @@
 # CalorieTracker
 
+![GitHub Repo stars](https://img.shields.io/github/stars/Mahaoqu/CalorieTracker?style=social)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5542218.svg)](https://doi.org/10.5281/zenodo.5542218)
 [![API](https://img.shields.io/badge/API-29%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=29)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/55e28228be1f4d07b4741fab46853ee5)](https://www.codacy.com/gh/Mahaoqu/CalorieTracker/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Mahaoqu/CalorieTracker&amp;utm_campaign=Badge_Grade)
 ![Workflow](https://github.com/Mahaoqu/CalorieTracker/actions/workflows/android.yml/badge.svg)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![GitHub Licence](https://img.shields.io/github/license/Mahaoqu/CalorieTracker)
 ![GitHub top language](https://img.shields.io/github/languages/top/Mahaoqu/CalorieTracker)
 ![GitHub issues](https://img.shields.io/github/issues/Mahaoqu/CalorieTracker)
+![GitHub contributors](https://img.shields.io/github/contributors/Mahaoqu/CalorieTracker)
 
 <!-- PROJECT LOGO -->
 <br />
