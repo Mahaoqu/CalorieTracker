@@ -102,7 +102,7 @@ Android Emulator embedded in Android Studio or a real android device.
 
 * From apk file:
 
-   Download the apk file _[here](https://drive.google.com/file/d/1g4xrbyIkdJ4E1qNQDTp-v_9q2e-l_X1F/view?usp=sharing)_ and install it on your android device
+   Download the apk file _[here](https://drive.google.com/file/d/1njPs_mlMuuP6ZDWnRZmDXiwh0Yz2hyWa/view?usp=sharing)_ and install it on your android device
 
 
 <!-- USAGE EXAMPLES -->
